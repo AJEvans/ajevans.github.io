@@ -1,0 +1,304 @@
+<!--JSON-P mapping from GitHub-->
+<!--Picks up changes to repo  -->
+<!--Contact for info: Andy Evans: http://www.geog.leeds.ac.uk/people/a.evans/-->
+
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<LINK rel='stylesheet' href='http://mass.leeds.ac.uk/wp-content/themes/responsive/core/css/style.css' type='text/css'/>
+
+<!-- CSP - This may need adjusting						          -->
+<!-- at the least to stop XSS attacks directing to outside GitHub -->
+<!-- http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html   -->
+<!-- http://www.html5rocks.com/en/tutorials/security/content-security-policy/                  -->
+<META http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'none';">
+
+
+<!-- Scripts to get JSON-P content from GitHub. Standard library JSON-P requests to GitHub seem to fail                -->
+<!-- Possibly because GitHub demands the request "callback=functionName" rather than "jsonp=functionName"              -->
+<!-- but it also returns data in Base64 encoding which, e.g. jQuery (and possibly other libraries), does like parsing. -->
+<SCRIPT type="text/javascript">
+
+	
+	var jsonText = null;
+	
+	// Callback JSON-P function from Github API http://developer.github.com/v3/#json-p-callbacks
+	function getData(response) {
+		var data = response.data.content;
+		jsonText = decode64(data);
+		//console.log(jsonText);
+	}
+
+
+
+
+
+
+	// Base64 decoder from Ntt.cc
+	// http://ntt.cc/2008/01/19/base64-encoder-decoder-with-javascript.html
+	var keyStr = "ABCDEFGHIJKLMNOP" +
+        "QRSTUVWXYZabcdef" +
+        "ghijklmnopqrstuv" +
+        "wxyz0123456789+/" +
+        "=";
+	
+	function decode64(input) {
+		var output = "";
+		var chr1, chr2, chr3 = "";
+		var enc1, enc2, enc3, enc4 = "";
+		var i = 0;
+
+		// remove all characters that are not A-Z, a-z, 0-9, +, /, or =
+		var base64test = /[^A-Za-z0-9\+\/\=]/g;
+		
+		// alert suppressed -- does seem enacted with GitHub JSON. 
+		//if (base64test.exec(input)) {
+		//	alert("There were invalid base64 characters in the input text.\n" +
+        	//      "Valid base64 characters are A-Z, a-z, 0-9, '+', '/',and '='\n" +
+        	//      "Expect errors in decoding.");
+		//}
+		
+		input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
+
+		do {
+			enc1 = keyStr.indexOf(input.charAt(i++));
+			enc2 = keyStr.indexOf(input.charAt(i++));
+			enc3 = keyStr.indexOf(input.charAt(i++));
+			enc4 = keyStr.indexOf(input.charAt(i++));
+
+			chr1 = (enc1 << 2) | (enc2 >> 4);
+			chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
+			chr3 = ((enc3 & 3) << 6) | enc4;
+
+			output = output + String.fromCharCode(chr1);
+
+			if (enc3 != 64) {
+				output = output + String.fromCharCode(chr2);
+			}
+			if (enc4 != 64) {
+				output = output + String.fromCharCode(chr3);
+			}
+
+			chr1 = chr2 = chr3 = "";
+			enc1 = enc2 = enc3 = enc4 = "";
+
+		} while (i < input.length);
+
+		return unescape(output);
+	}
+
+
+</SCRIPT>
+
+
+
+<!-- JSON-P callback has to come after getData method (above) and before map loaded in main HTML (below). -->
+<!-- Because this needs to enact prior to map loading, standard script injection won't work as injected   -->
+<!-- scripts enact after page loaded first time and other scripts run. 									  -->
+<SCRIPT type="application/javascript"
+        src="https://api.github.com/repos/MassAtLeeds/RouteFactor/contents/test-routes.geojson?callback=getData">
+</SCRIPT>
+
+
+<!-- jQuery used for parsing JSON.												  -->
+<!-- Parsing using jQuery also has some security advantages - see XSS links above -->
+<SCRIPT type="text/javascript" src="jquery-1.11.0.min.js"></SCRIPT>
+
+
+<!-- Leaflet styles. -->
+<LINK rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+
+<!-- Leaflet javascript code. -->
+<SCRIPT src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></SCRIPT>
+
+<!-- Other styles to define the map. -->
+<STYLE type="text/css">
+    #map {height: 600px; width: 800px;}
+</STYLE>
+
+
+
+<!-- Script to check repo at appropriate intervals -->
+<SCRIPT type="text/javascript">
+
+	var eTag = "00";
+	var http = getHTTP();
+	
+	// Check appropriate interval for polling and set rate of function call.
+	var rate = http.getResponseHeader("x-ratelimit-limit");
+	var myVar=setInterval(function(){check()}, 3600000 / rate);
+
+	
+	// Checks for changes.
+	// ETag in the http returns hash for content. 
+	// Server only processes http request with If-None-Match if 
+	// passed in ETag different from current server ETag otherwise 
+	// returns http status 304 if no change.
+	// For details, see https://developer.github.com/v3/activity/events/
+	// For larger files it might be worth checking the actual events for genuine data changes.
+	function getHTTP () { 
+	
+		var req = new XMLHttpRequest();
+
+		req.open('GET', "https://api.github.com/repos/MassAtLeeds/RouteFactor/events", false);
+		req.setRequestHeader("If-None-Match", eTag);
+
+		req.send(null);
+		if (req.status != "304") {
+			eTag = req.getResponseHeader("ETag");
+		}
+		
+		if (rate != req.getResponseHeader("x-ratelimit-limit")) {
+			rate = req.getResponseHeader("x-ratelimit-limit");
+			window.clearInterval(myVar);
+			myVar=setInterval(function(){check()}, 3600000 / rate);
+		}
+		//alert(req.getAllResponseHeaders());
+		return req
+	
+	}
+
+	
+	
+	// Updates map if http request suggests repo changes.
+	function check() {
+
+		http = getHTTP();
+		//alert(http.status);
+		if (http.status != "304") {
+		
+			// Dynamically inject a script, the source of which is the JSON-P.
+			addScript();
+			
+			addFeatures();
+			
+			// Dynamically remove the script, the source of which is the JSON-P.
+			// Just to clean up, should we have many changes.
+			removeScript();
+			
+		} 
+		
+	}
+
+	
+	
+	var jsonLayer = null;
+	var map = null;
+	var layers = new Array();
+
+
+	// Removes all current JSON layers, then refreshes from the 
+	// dataset again.
+	function addFeatures() {
+
+		for (i = 0; i < layers.length; i++) {
+			map.removeLayer(layers[i]);
+		}
+
+		layers = new Array();
+
+		// Add GeoJSON data.
+		var obj = $.parseJSON(jsonText);
+
+		$.each(obj.features, function(key, feature) {
+					layers.push(L.geoJson(feature, {
+				onEachFeature: onEachFeature
+			}))
+		});
+
+		
+		for (i = 0; i < layers.length; i++) {		
+			map.addLayer(layers[i]);
+		}
+		
+	}
+	
+	
+	// Dynamically inject a script, the source of which is the JSON-P.
+	function addScript () {
+	
+		var script = document.createElement('SCRIPT');
+		script.type = 'text/javascript';
+		script.async = false;
+		script.src = 'https://api.github.com/repos/MassAtLeeds/RouteFactor/contents/test-routes.geojson?callback=getData';
+		var firstScript = document.getElementsByTagName('script')[0]; 
+		firstScript.parentNode.insertBefore(script, firstScript);
+	
+	}
+	
+	
+	// Dynamically remove the script, the source of which is the JSON-P.
+	function removeScript () {
+	
+		var firstScript = document.getElementsByTagName('SCRIPT')[0]; 
+		firstScript.parentNode.removeChild(firstScript);
+
+	}
+	
+	
+
+</SCRIPT>
+
+
+
+</HEAD>
+
+
+<BODY>
+	<DIV id="container" class="hfeed">
+    <H1>Example of a dynamic leaflet map from GitHub data</H1>
+
+    <!-- The map -->
+    <DIV id="map"></DIV>
+
+	
+		
+	<!-- Here is the code to control the map (has to be after the DIV) -->
+    <SCRIPT>
+
+	
+	// Set up map, centre on Leeds and zoom '13'.
+        map = L.map('map').setView([53.8077, -1.5564], 13);
+
+		
+        // Create an OSM tile layer with correct attribution.
+        // (see http://switch2osm.org/using-tiles/getting-started-with-leaflet/ )
+        var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+        var osmAttrib='Map data © OpenStreetMap contributors';
+        var osm = new L.TileLayer(
+            osmUrl,
+            {minZoom: 5, maxZoom: 20, attribution: osmAttrib}
+        );
+        map.addLayer(osm);
+
+		
+        // Add a popup on mouse click location.
+        var popup = L.popup();
+        function onMapClick(e) { // onMapClick captures mouse events
+            popup.setLatLng(e.latlng)
+                .setContent("You clicked the map at " + e.latlng.toString())
+                .openOn(map); // openOn automatically closes old popups
+        }
+        map.on('click', onMapClick);
+
+		
+	// Add a popup for mouse click on GeoJSON features.
+	// Function called for each feature when added, below.
+	function onEachFeature(feature, layer) {
+		// Note, property names are case sensitive.
+		if (feature.properties && (feature.properties.Person || feature.properties.Place)) {
+			layer.bindPopup(feature.properties.Person + " " + feature.properties.Place);
+		}
+	}
+	
+	// Add JSON features.
+	addFeatures();
+	
+	</SCRIPT>
+		
+		
+</DIV>		
+		
+
+</BODY>
+</HTML>

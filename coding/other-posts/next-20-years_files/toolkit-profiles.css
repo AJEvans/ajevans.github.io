@@ -1,0 +1,54 @@
+.profile-external-link {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+body .table-profiles tbody tr td {
+    hyphens:none;
+    -ms-hyphens:none;
+    -webkit-hyphens:none;
+    -moz-hyphens:none;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+}
+body .table-profiles tbody tr td.profile_email {
+    word-break: break-all;
+    hyphens:auto;
+    -ms-hyphens:auto;
+    overflow-wrap: break-word;
+}
+body .table-profiles tbody tr td.profile_image {
+    width:60px;
+}
+body .table-profiles tbody tr td.profile_image div {
+    display:inline-block;
+    max-width:60px;
+    margin-right:0;
+}
+@media screen and (min-width: 640px) {
+    .table-profiles th.profile-image {
+        width:60px;
+    }
+    .table-profiles tbody tr td:first-child {
+      width:80px;
+    }
+    .table-profiles.columns-5 td {
+      width:23%;
+    }
+    .table-profiles.columns-4 td {
+      width:27%;
+    }
+    .table-profiles.columns-3 td {
+      width:36%;
+    }
+}
+@media screen and (max-width: 640px) {
+    .tk-profiles .tk-nav-tabs {
+        width:100%;
+    }
+    .tk-profiles .tk-nav-tabs>li {
+        margin-right:0;
+        padding-right:0;
+        float:none;
+        display:block;
+    }
+}

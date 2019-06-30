@@ -1,0 +1,121 @@
+---
+layout: standardStandardPage
+---
+
+<div class="home">
+
+
+
+<H2 class="collapsible" style="cursor: pointer;"><DIV class="pluser" style="display: inline-block;  margin-right:10px; ">+</DIV>Administration</H2>
+<DL class="content" style="display: none; overflow: hidden;">
+<P>All positions within the University of Leeds</P>
+<DT>2016-2018: Faculty of Environment lead on Equality and Inclusion</DT>
+<DD>This post involved responsibility for developing and driving forward equality policies within the faculty; encouraging 
+an inclusive atmosphere; and 
+building towards our <A href="https://www.ecu.ac.uk/equality-charters/athena-swan/">Athena SWAN</A> charter certification.</DD>
+
+<DT>2013-2016: Chair of Ethics Board for Environment, Education, and the Social Sciences</DT>
+<DD>This post involved judging, adjusting, and ratifying where appropriate the most complex applications for ethical approval within 
+the subject areas of the environmental sciences, business, law, politics, education, and the other social sciences. In addition, I developed university 
+policies, for example on the use of microworkers, and sat on the committee developing staff training. </DD>
+
+<DT>2012-2013: Deputy Chair of Ethics Board for Environment, Education, and the Social Sciences</DT>
+<DD>See above. The post involved more standard applications. I also represented my department  
+in discussions on general ethics training for undergraduates.</DD>
+
+<DT>2000-2004: Chair of School IT and Web Committee</DT>
+<DD>As Chair of this committee I was the academic responsible for managing and budgeting for IT, planning our web-presence, 
+developing research computing, dealing with staff and student complaints, and liasing with the IT manager and team. I sat 
+on the university PC software committee, and a number of key infrastructure procurement teams.</DD>
+
+<DT>2007-2010: Director of Learning and Teaching</DT>
+<DD>As DLT I was responsible for the education of over 1000 students, management of the ~100 teaching staff, and a budget of ~&pound;6mil. 
+I was responsible for developing school teaching policy; all curricula within the school; the contracting of teaching staff and assistants; examinations; 
+the teaching income and expenditure of the school; student intake and criteria; and liasing with the broader university. During my time as 
+head of teaching, I was also responsible for our five-yearly review for the Quality Assurance Agency - the University equivalent of Ofsted, which we 
+passed at the highest level.</DD>
+
+<DT>2000-2004: School Chair of IT</DT>
+<DD>See above.</DD>
+
+<DT>1997-2005: School Webmaster</DT>
+<DD>As school webmaster, I was responsible for the external face of our department, including web policy, security, 
+information architecture, content and design.</DD>
+</DL>
+
+<H2 class="collapsible" style="cursor: pointer;"><DIV class="pluser" style="display: inline-block;  margin-right:10px; ">+</DIV>Community contributions</H2>
+<DL class="content" style="display: none; overflow: hidden;">
+
+
+<DT>Programme advice and assessment</DT>
+<DD>I've acted as external programme advisor for curricula in King's College London and UWE Bristol; external course examiner for 
+the Environmental Sciences at University of Hertfordshire; and as an institution external quality assessor for 
+University College London.</DD>
+
+<DT>External examiner</DT>
+<DD>If acted as external examiner for University of New South Wales; University of Manchester; University of Nottingham; and Memorial University of Newfoundland. 
+In total I've acted as an examiner on twenty PhDs.</DD>
+
+<DT>Reviews</DT>
+<DD>I've reviewed scientific papers for: Terra Antarctica; Environment and Planning B; Geographical Journal; Earth Surface Processes and Landforms; Innovations in GIS; 
+Land Use Policy; Journal of Hydrology; Applied Spatial Analysis and Policy; International Journal of GI Science; 
+JASSS; Comp Env Urban Systems; Information Science and Technology; Journal of Computational Science. I've also reviewed grant applications for: 
+UK ESRC; UK EPSRC; UK RGS; Singapore Education; Canadian NERCS; and NWO Netherlands.
+</DD>
+
+<DT>Tellus Project</DT>
+<DD>During the early 00s, I was responsible for the database of 'learning nuggets' held by the 
+Higher Education Academy for Geography, Earth, and the Environmental Sciences (GEES). I sat on various committees looking at structuring 
+formats and metadata for online learning components.</DD>
+
+<DT>Materials</DT>
+<DD>Software and course materials I've developed have been used in institutions as widely spread as 
+RMIT University Melbourne; University of South California; and Boston University.</DD>
+
+<DT>Conferences organised</DT>
+<DD>
+<ul>
+<li>Sept 2017: <A href="http://www.geocomputation.org/2017/conference/">21st International GeoComputation Conference</A>, Leeds.</LI>
+<li>Aug 1999: Leg 178 Ocean Drilling Program summary meeting, Iceland.</li>
+<li>Sept 1995: International Glaciological Society British Branch meeting, University of Leeds.</li>
+</ul>
+<P>
+I also co-run the <A href="http://www.geocomputation.org/">International GeoComputation Conference Series</A>.
+</P>
+</DD>
+
+</DL>
+
+
+
+
+<script>
+// This script adapted from: https://www.w3schools.com/howto/howto_js_collapsible.asp
+var coll = document.getElementsByClassName("collapsible");
+
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+	var pluser = this.getElementsByClassName("pluser")
+    if (content.style.display === "block") {
+      content.style.display = "none";
+	  html = pluser[0].innerHTML
+	  html = html.replace("-","+")
+	  pluser[0].innerHTML = html
+    } else {
+      content.style.display = "block";
+	  html = pluser[0].innerHTML
+	  html = html.replace("+","-")
+	  pluser[0].innerHTML = html
+    }
+  });
+}
+</script>
+
+
+  
+</div>

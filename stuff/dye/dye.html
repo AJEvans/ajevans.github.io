@@ -1,0 +1,99 @@
+<HTML>
+<HEAD>
+<TITLE>Dispersion Calculator</TITLE>
+<LINK rel="stylesheet" href="http://www.geog.leeds.ac.uk/style/docstyle1.css" type="text/css">
+
+</HEAD>
+<BODY>
+<HR>
+<H3>Dye dispirsion calculator</H3>
+<HR><P>
+<applet
+   name="dye"
+   code="dye" 
+   width="500"   height="500"
+   align="Top"
+   alt="If you had a java-enabled browser, you would see an applet here."
+></applet>
+<P>
+<HR>
+<P>
+<IMG SRC="dye.jpg" align=right alt="Dye tracing on Falljokull, Iceland"></IMG>
+
+<H4>Help...</H4>
+<P>
+This page calculates the rate of dispirsion of a cloud 
+of dye as it travels through a water system. 'Time one' is 
+the time to reach half the peak value in minutes, 'time two' is the 
+time for it to fall back to half the peak value after the 
+peak has passed. The output includes the estimate of the 
+peak time and the dispersion coefficient.
+<P>
+The coefficient is calculated by iteratively using 
+times for the peak event between times one and two. 
+This time is placed into the equations for dispersion, 
+one of which has 'time one' as a constant, the other 
+'time two'. The true values of the coeff and estimated 
+peak time will occur when the iterated peak time 
+gives the same value for the coeff in both equations.<p> 
+This is highly unlikely to occur, so there is a tolerance 
+function, which is the amount the coeff is allowed to vary 
+either side of one of the equation's values before it 
+is equal to the other's value. Essentially this sets the 
+decimal places to which the coeff is accurate.<p>
+The spacing of the time iterations will also effect the 
+values. 
+There are two calculating options. 
+<OL>
+<LI> Calculate all the values of the coeff that fall
+ within the tolerance limits for time iterations of a 
+given value. The page won't bother displaying these values 
+if there are more that 300. For a well known spreadsheet 
+equivalent of this page, the time iteration is about '3'.
+I'd stick with the defaults if you are not sure. Use this 
+option if you don't like the optimiser and want to get 
+multiple values to average.
+<LI> Optimise by time and toleration. This option should 
+usually reduce the figures to one optimal set. Extra data 
+is optimised away by first reducing the time increments 
+to smaller and smaller levels until the tolerance takes over as 
+the controlling factor or we can't get more accurate 
+coeffs for this tolerance, then the tolerance is iteratively 
+reduced. While 
+this procedure is a pretty cack-handed way of finding a solution 
+to the equations, it'll do for now, given the levels of 
+accuracy inherent in the measurements.
+</OL>
+<P>
+The other checkbox allows you to examine the dispersion coeffs 
+as they are being calculated. This is just so you can check 
+the system is doing something rather than hanging. Be warned 
+that this option massively increases the time for the 
+calculations and you may need to occasionally clear the 
+java console as it fills up and hangs on some browsers.
+<P>
+I'd also recommend you run this page in a new browser window 
+which you can kill if the page hangs. That way you shouldn't 
+have to restart your browser.
+<P>
+If you want a copy of the source code, this page, and the 
+java classes so you can run this off line, here's a 
+<A HREF="dye.zip">zip file</A> with them in. If you want further 
+information, email <A HREF="http://www.geog.leeds.ac.uk/staff/a.evans/">Andy Evans</A> on 
+<A HREF="MAILTO:geoaje@leeds.ac.uk">geoaje@leeds.ac.uk</A>. If you improve the 
+code, let me know and I'll update it!
+<DIV CLASS=details>
+<P>
+<HR>
+<P>
+<A HREF="http://www.geog.leeds.ac.uk/" CLASS=foot>[Geography Homepage]</A> <A HREF="http://www.leeds.ac.uk/" CLASS=foot>[University Homepage]</A>
+<P>
+<HR>
+<P>
+</DIV>
+
+</BODY>
+</HTML>
+ 
+
+  

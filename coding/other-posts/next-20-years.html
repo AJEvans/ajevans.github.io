@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="mozwebext js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths tablesaw-enhanced" style="" lang="en-GB"><!--<![endif]--><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="copyright" content="Copyright (c)2019 CSAP Blog. All Rights Reserved.">
+
+		<title>GeoComputation: the next 20 years (Andy Evans) : CSAP Blog</title>
+<link rel="dns-prefetch" href="https://cdnjs.cloudflare.com/">
+<link rel="dns-prefetch" href="https://use.typekit.net/">
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="stylesheet" id="tk_typekit-css" href="next-20-years_files/vlw5ilb.css" media="all">
+<link rel="stylesheet" id="tk_bootstrap-css" href="next-20-years_files/bootstrap.css" media="screen">
+<link rel="stylesheet" id="tk_toolkit-css" href="next-20-years_files/toolkit.css" media="screen">
+<link rel="stylesheet" id="tk_toolkit_print-css" href="next-20-years_files/print.css" media="print">
+<link rel="stylesheet" id="wp-block-library-css" href="next-20-years_files/style.css" media="all">
+<link rel="stylesheet" id="toolkit-profiles-css-css" href="next-20-years_files/toolkit-profiles.css" media="all">
+<link rel="stylesheet" id="toolkit-shortcode-css-css" href="next-20-years_files/toolkit-shortcodes.css" media="all">
+<link rel="stylesheet" id="tk_theme_style-css" href="next-20-years_files/style_002.css" media="all">
+<script type="text/javascript" async="" src="next-20-years_files/analytics.js"></script><script async="" src="next-20-years_files/gtm.js"></script><script type="text/javascript" src="next-20-years_files/jquery.js"></script>
+<script type="text/javascript" src="next-20-years_files/jquery-migrate.js"></script>
+<script type="text/javascript" src="next-20-years_files/modernizr.js"></script>
+<link rel="https://api.w.org/" href="https://csapblog.leeds.ac.uk/wp-json/">
+<link rel="alternate" type="application/json+oembed" href="https://csapblog.leeds.ac.uk/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcsapblog.leeds.ac.uk%2Fgeocomputation-the-next-20-years%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://csapblog.leeds.ac.uk/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fcsapblog.leeds.ac.uk%2Fgeocomputation-the-next-20-years%2F&amp;format=xml">
+<style>.post-thumbnail img[src$='.svg'] { width: 100%; height: auto; }</style><link sizes="icon" rel="192x192" href="https://csapblog.leeds.ac.uk/wp-content/themes/toolkit-wordpress-theme/img/icons/touch-icon-192x192.png"><link sizes="icon" rel="16x16" href="https://csapblog.leeds.ac.uk/wp-content/themes/toolkit-wordpress-theme/img/icons/favicon.ico"><link sizes="apple-touch-icon" rel="180x180" href="https://csapblog.leeds.ac.uk/wp-content/themes/toolkit-wordpress-theme/img/icons/apple-touch-icon-180x180-precomposed.png"><link sizes="apple-touch-icon" rel="152x152" href="https://csapblog.leeds.ac.uk/wp-content/themes/toolkit-wordpress-theme/img/icons/apple-touch-icon-152x152-precomposed.png"><link sizes="apple-touch-icon" rel="144x144" href="https://csapblog.leeds.ac.uk/wp-content/themes/toolkit-wordpress-theme/img/icons/apple-touch-icon-144x144-precomposed.png"><link sizes="apple-touch-icon" rel="120x120" href="https://csapblog.leeds.ac.uk/wp-content/themes/toolkit-wordpress-theme/img/icons/apple-touch-icon-120x120-precomposed.png"><link sizes="apple-touch-icon" rel="114x114" href="https://csapblog.leeds.ac.uk/wp-content/themes/toolkit-wordpress-theme/img/icons/apple-touch-icon-114x114-precomposed.png"><link sizes="apple-touch-icon" rel="76x76" href="https://csapblog.leeds.ac.uk/wp-content/themes/toolkit-wordpress-theme/img/icons/apple-touch-icon-76x76-precomposed.png"><link sizes="apple-touch-icon" rel="72x72" href="https://csapblog.leeds.ac.uk/wp-content/themes/toolkit-wordpress-theme/img/icons/apple-touch-icon-72x72-precomposed.png"><link sizes="apple-touch-icon" rel="16x16" href="https://csapblog.leeds.ac.uk/wp-content/themes/toolkit-wordpress-theme/img/icons/apple-touch-icon-precomposed.png"><link rel="canonical" href="https://csapblog.leeds.ac.uk/geocomputation-the-next-20-years/">	<style type="text/css">[responsive-image] > img, [data-responsive-image] {overflow: hidden; padding: 0; } [responsive-image] > img, [data-responsive-image] > img { width: 100%;}</style></head>
+	<body class="post-template-default single single-post postid-138 single-format-standard geocomputation-the-next-20-years">
+        				<!-- Google Tag Manager -->
+				<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+				new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+				j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+				'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+				})(window,document,'script','dataLayer','GTM-WJPZM2T');</script>
+				<!-- End Google Tag Manager -->
+				<!-- Google Tag Manager (noscript) -->
+				<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WJPZM2T"
+				height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+				<!-- End Google Tag Manager (noscript) -->
+				
+		<div class="site-container ">
+
+			<nav id="quicklinks" class="quicklinks collapse">
+	<div class="wrapper-relative wrapper-lg">
+		<div class="quicklinks-inner">
+			<div class="row">
+				<div class="col-sm-6 col-md-3">
+					<ul class="quicklinks-list">
+						<li class="title">For staff</li>
+						<li><a href="https://www.leeds.ac.uk/forstaff/">For Staff</a></li>
+						<li><a href="https://www.leeds.ac.uk/forstaff/homepage/375/services">Services A-Z</a></li>
+						<li><a href="https://ses.leeds.ac.uk/">Student Education Service</a></li>
+					</ul>
+					<ul class="quicklinks-list">
+						<li class="title">For students</li>
+						<li><a href="https://minerva.leeds.ac.uk/webapps/portal/execute/tabs/tabAction?tab_tab_group_id=_206_1">Portal</a></li>
+						<li><a href="https://it.leeds.ac.uk/mobileapps">Mobile app</a></li>
+						<li><a href="https://students.leeds.ac.uk/">For Students</a></li>
+					</ul>
+				</div>
+				<div class="col-sm-6 col-md-3">
+					<ul class="quicklinks-list">
+						<li class="title">Faculties</li>
+						<li><a href="https://ahc.leeds.ac.uk/">Faculty of Arts, Humanities and Cultures</a></li>
+						<li><a href="https://biologicalsciences.leeds.ac.uk/">Faculty of Biological Sciences</a></li>
+						<li><a href="https://business.leeds.ac.uk/">Faculty of Business</a></li>
+						<li><a href="https://essl.leeds.ac.uk/">Faculty of Social Sciences</a></li>
+						<li><a href="https://engineering.leeds.ac.uk/">Faculty of Engineering</a></li>
+						<li><a href="https://environment.leeds.ac.uk/">Faculty of Environment</a></li>
+						<li><a href="https://physicalsciences.leeds.ac.uk/">Faculty of Mathematics and Physical Sciences</a></li>
+						<li><a href="https://medicinehealth.leeds.ac.uk/">Faculty of Medicine and Health</a></li>
+						<li><a href="https://www.llc.leeds.ac.uk/">Lifelong Learning Centre</a></li>
+					</ul>
+				</div>
+				<div class="col-sm-6 col-md-3">
+					<ul class="quicklinks-list">
+						<li class="title">Other</li>
+						<li><a href="https://www.leeds.ac.uk/staffaz">Staff A-Z</a></li>
+						<li><a href="https://www.leeds.ac.uk/campusmap">Campus map</a></li>
+						<li><a href="https://www.leeds.ac.uk/jobs">Jobs</a></li>
+						<li><a href="https://alumni.leeds.ac.uk/">Alumni</a></li>
+						<li><a href="https://www.leeds.ac.uk/contact">Contacts</a></li>
+						<li><a href="https://library.leeds.ac.uk/">Library</a></li>
+						<li><a href="https://it.leeds.ac.uk/">IT</a></li>
+						<li><a href="https://video.leeds.ac.uk/">VideoLeeds</a></li>
+						<li><a href="https://www.luu.org.uk/">Leeds University Union</a></li>
+					</ul>
+				</div>
+				<div class="col-sm-6 col-md-3">
+					<ul class="quicklinks-list">
+						<li class="title">Follow us</li>
+						<li><a href="https://www.facebook.com/universityofleeds">Facebook</a></li>
+						<li><a href="https://www.twitter.com/universityleeds">Twitter</a></li>
+						<li><a href="https://www.youtube.com/universityofleeds">YouTube</a></li>
+						<li><a href="https://www.linkedin.com/edu/university-of-leeds-12706">LinkedIn</a></li>
+						<li><a href="https://instagram.com/universityofleeds/">Instagram</a></li>
+						<li><a href="https://itunes.apple.com/gb/institution/university-of-leeds/id610001825">ITunes U</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="quicklinks-close">
+			<button class="icon-font btn-icon js-quicklinks-close" data-toggle="collapse" data-target="#quicklinks">
+				<span class="tk-icon-close" aria-hidden="true"></span>
+				<span class="icon-font-text">Close quicklinks</span>
+			</button>
+		</div>
+	</div>
+</nav><header class="masthead">
+	<div class="wrapper-lg">
+		<!-- Open button -->
+		<div class="masthead-links">
+			<button class="masthead-link masthead-link-quicklinks js-quicklinks-toggle" data-toggle="collapse" data-target="#quicklinks">Quicklinks</button>
+		</div>
+		<div class="navicon">
+			<button class="btn-icon" data-state="body-state" data-class="state-navicon-active">Menu</button>
+		</div>
+		<div class="site-logo">
+			<a href="http://www.leeds.ac.uk/"><img src="next-20-years_files/logo.svg" alt="University of Leeds"></a>
+		</div>
+	</div>
+</header><div id="sitesearch" class="site-search collapse">
+	<div class="wrapper-pd wrapper-lg">
+		<form id="header_form" class="site-search-inner" autocomplete="off" method="get" action="https://csapblog.leeds.ac.uk" role="search">
+			<label class="sr-only" for="searchInput">Search</label>
+			<input id="searchInput" class="site-search-input" type="search" name="q" placeholder="Search" autocomplete="off">
+			<label class="sr-only" for="searchOption">Destination</label>
+			<select id="searchOption" class="site-search-select js-action-toggle" name="searchOption">
+				<option value="searchSite" selected="selected" data-action="https://csapblog.leeds.ac.uk">CSAP Blog site</option>
+				<option value="searchAll" data-action="http://www.leeds.ac.uk/site/scripts/search_results.php">All leeds.ac.uk sites</option>
+			</select>
+			<input class="site-search-submit btn btn-primary" type="submit" value="Search">
+		</form>
+	</div>
+</div><div class="local-header">
+	<div class="wrapper-pd-xs wrapper-lg">
+		<div class="local-header-inner">
+			<div class="local-header-title">
+				<a href="https://csapblog.leeds.ac.uk/">CSAP Blog</a>
+			</div>
+			<div class="local-header-search">
+				<button class="icon-font sm-toggle-search btn-icon js-site-search-toggle" data-toggle="collapse" data-target="#sitesearch">
+					<span class="site-search-btn" aria-hidden="true"></span>
+					<span class="icon-font-text">Search</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div><nav class="tk-nav tk-nav-priority">
+	<div class="wrapper-relative wrapper-lg">
+		<div class="tk-nav-header">
+			<button class="btn-icon" data-state="body-state" data-class="state-navicon-active">Close</button>
+		</div>
+		<div class="tk-nav-inner">
+			<ul class="tk-nav-list tk-nav-list-primary"><li id="menu-item-184" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-184"><a href="https://csapblog.leeds.ac.uk/">Home</a></li>
+<li id="menu-item-182" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-182"><a href="https://csapblog.leeds.ac.uk/about/">About</a></li>
+<li id="menu-item-241" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-241"><a href="https://csapblog.leeds.ac.uk/meeting-schedule-201819/">Meeting Schedule 2018/19</a></li>
+</ul>		</div>
+	</div>
+</nav>
+            <div class="main wrapper-lg">
+<div class="wrapper-pd-xs"><ul id="breadcrumb" class="breadcrumb"><li class="item-home"><a class="bread-link bread-home" href="https://csapblog.leeds.ac.uk/" title="Home">Home</a></li><li class="item-cat item-custom-post-type-post"><a class="bread-cat bread-custom-post-type-post" href="https://csapblog.leeds.ac.uk/" title="Blog">Blog</a></li></ul></div>
+    <div class="column-container">
+        
+<aside class="column-container-secondary" role="complementary">
+		
+	<div class="sidebar" role="complementary">
+
+		<div class="sidebar-widget">
+			<div id="categories-4" class="widget_categories"><button class="sidebar-widget-button js-widget-toggle">Categories:</button><h4 class="sidebar-heading heading-related">Categories</h4>			<ul class="widget-nav js-widget-content">
+					<li class="cat-item cat-item-2"><a href="https://csapblog.leeds.ac.uk/category/abm/">abm</a>
+</li>
+	<li class="cat-item cat-item-25"><a href="https://csapblog.leeds.ac.uk/category/bayesian/">bayesian</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="https://csapblog.leeds.ac.uk/category/conference/">conference</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="https://csapblog.leeds.ac.uk/category/crime/">crime</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="https://csapblog.leeds.ac.uk/category/data/">data</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="https://csapblog.leeds.ac.uk/category/diversity/">diversity</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="https://csapblog.leeds.ac.uk/category/education/">education</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="https://csapblog.leeds.ac.uk/category/ethics/">ethics</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="https://csapblog.leeds.ac.uk/category/geocomputation/">geocomputation</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="https://csapblog.leeds.ac.uk/category/gis/">gis</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="https://csapblog.leeds.ac.uk/category/health/">health</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="https://csapblog.leeds.ac.uk/category/microsimulation/">microsimulation</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="https://csapblog.leeds.ac.uk/category/paper/">paper</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="https://csapblog.leeds.ac.uk/category/phd/">phd</a>
+</li>
+	<li class="cat-item cat-item-17"><a href="https://csapblog.leeds.ac.uk/category/politics/">politics</a>
+</li>
+	<li class="cat-item cat-item-22"><a href="https://csapblog.leeds.ac.uk/category/population-projections/">population projections</a>
+</li>
+	<li class="cat-item cat-item-24"><a href="https://csapblog.leeds.ac.uk/category/programming/">programming</a>
+</li>
+	<li class="cat-item cat-item-23"><a href="https://csapblog.leeds.ac.uk/category/retail/">retail</a>
+</li>
+	<li class="cat-item cat-item-18"><a href="https://csapblog.leeds.ac.uk/category/sport/">sport</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="https://csapblog.leeds.ac.uk/category/tutorial/">tutorial</a>
+</li>
+	<li class="cat-item cat-item-26"><a href="https://csapblog.leeds.ac.uk/category/visualisation/">visualisation</a>
+</li>
+			</ul>
+			</div>		</div>
+
+	</div>
+	</aside>
+<!-- ./column-container-secondary-->
+<!-- $/SIDEBAR -->
+
+        <div class="column-container-primary">
+
+            <div class="wrapper-sm wrapper-pd">
+    
+        <article id="post-138" class="wrapper-xs wrapper-pd article post-138 post type-post status-publish format-standard hentry category-conference category-data category-ethics category-geocomputation">
+            <header class="wrapper-pd wrapper-sm text-center">
+    		    <div class="rule-image rule-image-sm">
+    		        <span style="background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAIAAAC1nk4lAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAw5JREFUeNrsWjtv01AUjtMqA55jd7QrIYESGFt1I5SJOn0wUDESAT8ABiQkGIJgZegICmOVTjyyQsfSrI1X7LXO2ozl8sU3OFfXJjjJSewgH2U4x3Lu/Xx07ncetrK3ezdHLaqqWtVdKK2vn3q9Hvn6y+Qrrq1v1GqPNU2HXqlsNhrv26cntFsohJ4GUMAFaOm63Tk7OHjneedUGy1dv3aVZCGruvP02XPTXI18mMrtO4VCAehT5Gl4NxKuJI7zkyRUaGI6COLRAk+TgM5TRXOc20rlGyTbEYCOExgiG6YC9Fg4xnrCGYIulW/Gv7kYL5BmyB5wG9wMHFpsKGDrrk/YnSnob3k60ngy8dm6t7eVMHuIjgQZc0qWFEIhBg0mdn2IrdZnSUmmYFKUpfAlmbD1lVKpDEXXVpC6ReWfqzF2mYynDcPkyq3KpqSkNzwCztY0TVLSC3o+spCgx0gu4tEBPdfrb6Cgm3Jdh58j+XSGr/CkWNR4zBw1D5vNwwkOIkFpykt7HyBTckN8rH8txC+53Ja1nXA9jZN3f//BnMODpgk4Pv7W9TweNuDpv5mIiwoFA1KB/s6DZB9A+yijTTxDikBDHtYeoejDIRthqlfUFIUHL1N5Ao9jZsklAy3Wb8NEszie/rWI4aEsIGglH5XOs4OYfhlj1Kso+aAZsaxtaVZkGKviqGm0Gaxo22fCq4K4DDNJRixqulRCjGUOi/JSGUt5fi31/4cHTe3xsfEhcgzp9wE5sTMgKb5pQDuuw7uv0XIkNFfzBt31zqXtu/FeAiF8J/vjtKDrr9+Gi8yO3YnzX9COFB4wbbvz6uWLZOppUdrtH5wTaMvoGbJHq/VFK+ogcvzQquAB0g6aZwrDHEz0oMDl5G+aiUG7riNlSpiDaU5qQaOTlV4nwwza2wRAM3bZn1xF9iB/Jlrgh97FRRAPfYWxYHDKIqsLxgYrJ8geVnWnfXri+CFhGmbkRD0tIwRR1tY3wt8iZE1ABjoDnYHOQGegM9BJp/HI7yBQGMX55g4VX/i2CT6s+C3AAFbwPXZKHv6GAAAAAElFTkSuQmCC')"></span>
+    		    </div>
+    		    <p class="heading-related">
+    		        <span class="name-divider"><a href="https://csapblog.leeds.ac.uk/category/conference/" rel="tag">conference</a>, <a href="https://csapblog.leeds.ac.uk/category/data/" rel="tag">data</a>, <a href="https://csapblog.leeds.ac.uk/category/ethics/" rel="tag">ethics</a>, <a href="https://csapblog.leeds.ac.uk/category/geocomputation/" rel="tag">geocomputation</a></span>    		        <span><time><span class="date">Monday 19 September 2016</span></time></span>
+    		    </p>
+    			    		    <h1 class="heading-underline">GeoComputation: the next 20 years (Andy Evans)</h1>
+    					  
+            </header>		
+		
+
+		    <div class="social-share" id="social-sharetop"><button class="btn-icon social-toggle" data-toggle="toggle" data-target="#social-sharetop">Share</button><div class="social-links"><a href="#" data-type="twitter" data-url="https://csapblog.leeds.ac.uk/geocomputation-the-next-20-years/" data-description="GeoComputation: the next 20 years (Andy Evans)" data-via="twitter" class="js-pretty-social"><span class="icon-font-text">Twitter</span><span class="tk-icon-social-twitter"></span></a><a href="#" data-type="facebook" data-url="https://csapblog.leeds.ac.uk/geocomputation-the-next-20-years/" data-title="GeoComputation: the next 20 years (Andy Evans)" data-media="" class="js-pretty-social"><span class="icon-font-text">Facebook</span><span class="tk-icon-social-facebook"></span></a><a href="#" data-type="googleplus" data-url="https://csapblog.leeds.ac.uk/geocomputation-the-next-20-years/" data-description="GeoComputation: the next 20 years (Andy Evans)" class="js-pretty-social"><span class="icon-font-text">Google+</span><span class="tk-icon-social-google"></span></a><a href="#" data-type="linkedin" data-url="https://csapblog.leeds.ac.uk/geocomputation-the-next-20-years/" data-title="GeoComputation: the next 20 years (Andy Evans)" data-via="linkedin" data-media="" class="js-pretty-social"><span class="icon-font-text">Linkedin</span><span class="tk-icon-social-linkedin"></span></a></div><hr></div>
+			
+			            <div class="jadu-cms">
+				<p><strong>Author: <a href="http://www.geog.leeds.ac.uk/people/a.evans/">Andy Evans</a>.</strong></p>
+<p><strong>In many respects, GeoComputation is a field whose time has come.</strong> If we take GeoComputation to be “The Art and Science of Solving Complex Spatial Problems with Computers”<sup><a href="#1">1</a></sup>,
+ GeoComputation is now the go-to area for both professional analysts and
+ the public. 20 years ago, in 1996, when the field was launched with the
+ first <a href="http://www.geocomputation.org/">international GeoComputation conference</a>
+ in Leeds, UK, it was the passion of a few excited coders and 
+geographers. Now, the analysis, visualisation, and use of spatial data 
+is everywhere. It is therefore a great time to be reflecting on what the
+ future holds for “GeoComp” – both as an academic subject, and more 
+broadly within society. With this in mind, the community has been 
+holding a number of events looking forward to the next 20 years in the 
+runup to the next conference when the series will return to Leeds for a 
+celebration and reflection.</p>
+<p><strong>It seems clear, at least at the moment, that the next 20 years will be shaped by the growth of data.</strong>
+ After years of bemoaning the lack of data for analysis and policy 
+making, we now have vast amounts of information, albeit of varying 
+quality and coverage, with which to understand the world and society. 
+However, it seems worth reflecting on the nature of that data and how 
+that nature will affect our community. <strong>With that data expansion 
+we are also seeing a shift towards information different in two ways: 
+the first difference is a shift towards immediacy as a time-frame, and 
+the second is a shift to the individual as a unit of information.</strong> These changes bring some key opportunities, but also some key responsibilities for the GeoComp community.</p>
+<p>These two changes to data are already playing out in people’s lives, in interlinked ways. <strong>This is particularly clear in the growing field of what we might call “bespoke individual policies”.</strong>
+ For example, we have already seen the growth of car insurers offering 
+reductions in premiums based on voluntary GPS tracking, along with 
+healthcare insurers setting lower fees based on fitness-tracker activity
+ profiles. Although such policies are generally not most obviously 
+enacted by governments, they are frequently supported by governments as 
+enacting worthwhile social adjustments (for example, by allowing 
+flexibility in insurance regulations). This growth of quick-response, 
+individual-level ‘opportunities’ is a more targeted, and therefore one 
+might argue, more engaging system than aggregate policy making, and one 
+that would seem increasingly popular in a neo-liberal capitalist milieu 
+that is centred on personal responsibility and opportunity. And, infact,
+ closer examination of government areas like the tracking and support of
+ individual school pupils and the tackling of long-term unemployment 
+shows that often the approach to target achievement by government 
+departments is (at least nominally) to disaggregate support and tracking
+ to the individual level. In part this is because it is generally the 
+right location for support, but also to somewhat devolve failings to 
+individuals not aggregate policy; in UK press rhetoric at least, the 
+discussion is not about investment in areas, but in the failings of 
+“problem families” and “skivers” – though in reality the area-based 
+approach to investment continues in parallel. Finally, we have also seen
+ the growth of algorithmic management in the so-called “gig economy”<sup><a href="#2">2</a></sup>;
+ zero-hour contracts and microworkers controlled at an individual level 
+by algorithmic work policies. There are a great many tricky questions 
+such a movement brings: can policies be automated, and to what time 
+scale? What does it mean to vote for a long-term government, when 
+policies are individual, bespoke, short-term, and commercially applied? 
+These are questions to which a community with expert computational 
+knowledge and a strong social understanding is well placed to 
+contribute.</p>
+<p>In many senses, GeoComputation should be keen to embrace the data 
+changes at least. For years, we have struggled with two major 
+statistical issues. The first is the Ecological Fallacy: the problem 
+that we have previously needed to build policy around areas, not people,
+ and that by doing so we have to assume that everyone in an area is 
+represented by some prototypical description of what people in that area
+ are like – if you live in an area where your neighbours all read a 
+right-wing broadsheet newspaper, you too will, needs must, be treated 
+like a right-wing broadsheet reader. The second is the Modifiable Areal 
+Unit Problem (the “MAUP”): that aggregated statistics like averages 
+change depending on where you draw area boundaries, as different groups 
+of people are included in each area once drawn. Individual-level policy 
+application and analysis seem like positive moves against these issues 
+and ones we should embrace. In addition, <strong>individual level data 
+brings greater nuance and understanding of lived experience, filling in 
+the gaps of detail and coverage so long bemoaned in aggregate and yearly
+ datasets.</strong> As such, it should contribute to better aggregate 
+analysis and policy making as well as more individual-level 
+applications. This doesn’t just apply to human geography: whether it is 
+understanding people’s daily routines, or the territory of individual 
+animals, or the way a rock moves within bedload, the shift to individual
+ and instant data promises to help us understand the world and better 
+contribute to solving the problems we see in it.</p>
+<div id="attachment_149" style="width: 418px" class="wp-caption alignleft"><a href="http://leedsbasic.wpengine.com/csapblog/wp-content/uploads/sites/128/2016/09/risk.jpg"><img aria-describedby="caption-attachment-149" class=" wp-image-149" src="next-20-years_files/risk.jpg" alt="Census and daytime populations at risk from crime" width="408" height="262"></a><p id="caption-attachment-149" class="wp-caption-text">Census and daytime populations at risk from crime<sup><a href="#3">3</a></sup></p></div>
+<p>In that sense, one of the key improvements GeoComputation needs to 
+make in the next 20 years is not only improved spatio-temporal pattern 
+finding (what is the relationship between aggregates of things over time
+ in space), but also how smaller elements fit into those larger 
+patterns. Complex systems analysis has taught us that small changes at 
+the individual level across a population can have big effects at the 
+system level, but <strong>we have yet to develop the tools we need to 
+track how individual-level behaviours induce ’emergent’ large-scale 
+patterns, and link those scales through time (tracking both forwards and
+ backwards)</strong>. Moreover, we need better tools for doing this in dynamic systems that are evolving before our eyes: <strong>we
+ need methods and models that utilise the instantaneous reporting of 
+many modern datasets, producing the kinds of short-term, high-quality, 
+local analyses and predictions that could feed into more agile, 
+responsive, (and potentially automated) policy-making</strong>; whether that be in responding to floods, local resource needs, or ecological protection.</p>
+<p>However, I don’t think I’m alone in feeling ethically ‘queasy’ about this area, and <strong>it
+ seems clear that the GeoComputational community has a shared 
+responsibility to make sure that individual-level data is used to <em>enhance</em> individual freedoms while also supporting the development of a fair, supportive, and sustainable society more broadly</strong>
+ – a balance that is surely a key issue in modern, if not most, 
+civilisations. As the people developing and managing the foundations of 
+many of these implementations, we need to be the group that points out 
+the pitfalls of these techniques and keeps them from being tools of 
+suppression and dissimulation.</p>
+<p><strong>Traditionally, one of the dangers of the data-driven treatment of people is that we lose sight of individuals as human beings.</strong>
+ To choose but two examples, Aly Gotz and Susanne Helm have shown the 
+place of geographers and quantitative social scientists in the 
+construction of the Holocaust, in part as a solution to population and 
+land management in 1930s Germany<sup><a href="#4">4</a></sup>; while Geoffrey Bowker and Susan Star have shown the place of census statisticians in the apartheid system<sup><a href="#5">5</a></sup>.
+ Nevertheless, I think most GeoComputational people are aware of this 
+trend in the more everyday as well. Indeed, in some respects one of the 
+potential positives of the shift to the individual data subject is that 
+it responds to the demands of the “cultural turn” in geography during 
+the 1970s and 80s, that geography needs to consider individual lived 
+experience more. Nevertheless, it should be clear that simply 
+concentrating on the individual does not relieve us of the potential 
+that we might treat people as mere numbers, albeit smaller ones.</p>
+<p><strong>A positive move in this respect, and one GeoComputation needs
+ to highlight more, is what one might call the “cognitive movement” in 
+quantitative geography.</strong> While much work in the field does treat
+ individuals as numbers, there is also an increased interest in 
+quantitatively capturing how people understand and interact with the 
+world in a more nuanced fashion. The popular methodology of <a href="https://en.wikipedia.org/wiki/Agent-based_model">Agent-Based Modelling</a>
+ is generally constructed around a cognitive framework that encompasses 
+Beliefs, Desires, and Intentions (plans). Equally, the vernacular and 
+crowd-sourced understanding of the world is increasingly an important 
+data area; with this understanding being extracted from social media and
+ folksonomy (tag-based) datasets. <strong>This shift from “real” data to capturing and modelling <em>beliefs</em>
+ about the world should let us concentrate on what people understand 
+about objects and relationships in the world (what we might call a 
+“doxastic geography”), and how they use those beliefs.</strong> This 
+seems to me to be a key area of potential over the next 20 years, 
+especially when it comes to GeoComputation contributing to issues of 
+cross-cultural understanding, and the resolution of conflicts in 
+resource use.</p>
+<div style="float: right; width: 200px; margin: 20px;">
+<p><a href="http://leedsbasic.wpengine.com/csapblog/wp-content/uploads/sites/128/2016/09/crime.jpg"><img src="next-20-years_files/crime.jpg" alt="Crime perceptions vs real crime" width="200px" height="200px"></a></p>
+<p><i>Percieved high crime areas vs real crime statistics. Users 
+spraycanned a map with their beliefs about where crime was high and this
+ was then compared with real stats: red areas are where average 
+perceptions of crime were higher, in a very rough sense, than expected 
+from average crime statistics.<sup><a href="#6">6</a></sup></i></p>
+</div>
+<p><strong>More immediately, the GeoComp community also has a 
+responsibility to see that new work is completed without repeating the 
+mistakes of the past.</strong> Although it is clear that there is a 
+growing use of data on us by companies, we have come a long way from the
+ genuine era of the “data elite”, where a few select organisations had 
+control over all data and it was impossible for anyone else to engage 
+with information to argue their case. Increasingly the arguments over 
+the way society manages the world are conducted not just <em>including</em> data, but with data as a medium and arena. <strong>When
+ everyone has access to the tools we have taken an important role in 
+developing, we have a responsibility to highlight what we have learnt 
+about methodological issues and make sure the tools are used well</strong>, walking that delicate refereeing balance between highlighting some quite complex statistical issues (MAUP, <a href="http://gisgeography.com/spatial-autocorrelation-moran-i-gis/">Spatial Autocorrelation</a>;
+ the Ecological Fallacy) while not acting as a pathway for suppressing 
+debate. We also, as ever, need to continue to provide rigor to analyses,
+ highlighting error and confidence limits. <strong>One key issue for the
+ next 20 years is not only how we track emergence through dynamic 
+systems, but also how we track error and confidence in specific evolving
+ system components.</strong></p>
+<p><strong>We also have a responsibility, in an increasingly immediate 
+world centred on the individual, to point out three key issues: the 
+first, that we have a history;</strong> that is, that the paths we have taken are <a href="https://en.wikipedia.org/wiki/Complexity">complex</a>,
+ complicated, and fraught with difficulties, so we understand better the
+ problems ahead of us, and not least because reflecting on one’s history
+ is a key part of personal growth. <strong>Secondly, we need to open up the spaces where data can contribute to people’s wellbeing:</strong>
+ we need to resist the temptation to concentrate on those datasets 
+collected for and by companies and the government, and their associated 
+uses, and show that data can contribute to improving people’s lives in 
+areas beyond commercial and social management: in areas of leisure and 
+pleasure; art and understanding; environment and health. <strong>Finally
+ we need to fight to maintain some sense of society in a milieu that is 
+increasingly individual-centred, despite economists and policy analysts 
+increasingly crying the failure of purely market-centred approaches.</strong>
+ We need to think through what duty people have to contribute data to 
+the positive management of society while also ensuring that a world in 
+which control is increasingly hell-bent on the individual-level responds
+ fairly and agilely to people’s needs. This will involve avoiding the 
+pitfall of assuming people never change; giving them the breathing space
+ and anonymity necessary for personal growth and avoiding undue 
+harassment; and embedding them within the aggregate responsibilities 
+(and joys) we all have to support and create a better society. One of 
+the many potential things lost in a concentration on the individual is 
+the sense of duty and altruism that is key to running a fair, 
+supportive, and sustainable society, and if all our concentration is on 
+individuals, we risk losing sight of that to the detriment of current 
+and future societies.</p>
+<p><strong>For me, the GeoComputational community is well placed to 
+contribute to these debates and build the tools necessary to negotiate 
+these complicated issues.</strong> We have the computational background 
+to build the numeric tools, but the humanistic background to understand 
+how those tools affect people’s lives; we’re excited by the potential 
+for data, but equally understand that data is neither perfect nor a 
+complete representation; and we understand both the social issues at the
+ heart of worthwhile data use, and also the statistical and application 
+issues. It is easy to drop into partisan thinking on the data issue: 
+either one is against individual-level instant data as encouraging “Big 
+Brother”, or one is for it as an opportunity for the invisible hand of 
+capitalism. I think, however, there is a middle ground; one where data 
+supports the better understanding of society and the environment and 
+fills many of the gaps in our previous knowledge, with uses that 
+concentrate on solving key social and environmental issues. As it 
+happens, this has generally been the space that the GeoComputational 
+community has carved out for itself whatever the data, and I think this 
+bodes well for the liveliness and relevancy of the community going 
+forward. It is, in short, my hope that one major contribution the 
+GeoComputational community can make over the next 20 years as data 
+becomes more and more key to the way we live our lives, is to build and 
+oversee the development of tools for a better, more supportive, and 
+kinder society, a society that knows when data is important, and when it
+ is not.</p>
+<p><a href="http://www.geog.leeds.ac.uk/people/a.evans/">Andy Evans</a>, Co-Secretary, <a href="http://www.geocomputation.org/">International GeoComputation Conference</a> <a href="http://www.geocomputation.org/steer.html">steering group</a>.</p>
+<h3>Notes</h3>
+<p><sup><a id="1" name="1"></a>1</sup> As suggested back in the day by some fresh-faced tagline writer for the <a href="http://www.geocomputation.org/">GeoComputation</a> conference series website.</p>
+<p><sup><a id="2" name="#2"></a>2</sup> Sarah O’Connor (2016) <a href="https://yro.slashdot.org/story/16/09/11/0937240/when-your-boss-is-an-algorithm">When your boss is an algorithm</a>, <i>Financial Times Online</i>, 8<sup>th</sup> Sept 2016.</p>
+<p><sup><a id="3" name="3"></a>3</sup> Malleson N; Andresen MA (2015) <a href="http://eprints.whiterose.ac.uk/80371/">The impact of using social media data in crime rate calculations: shifting hot spots and changing spatial patterns</a>, Cartography and Geographic Information Science, 42.</p>
+<p><sup><a id="4" name="4"></a>4</sup> Aly Gotz and Susanne Helm (2002) <i>Architects of Annihilation: Auschwitz and the Logic of Destruction</i> London: Weidenfeld &amp; Nicolson. This<br>
+<a href="http://www.history.ac.uk/reviews/review/373">substantial review</a> by Jeremy Noakes is worth reading.</p>
+<p><sup><a id="5" name="5"></a>5</sup> Geoffrey C. Bowker and Susan Leigh Star (1999) <i>Sorting Things Out:<br>
+Classification and Its Consequences</i> MIT Press.</p>
+<p><sup><a id="6" name="6"></a>6</sup> Evans, A.J. and Waters, T. (2007) <a href="http://www.inderscience.com/search/index.php?action=record&amp;rec_id=14547">Mapping Vernacular Geography: Web-based GIS Tools for Capturing “Fuzzy” or “Vague” Entities</a>, <i>International Journal of Technology, Policy and Management</i>, 7, (2) 134-150.</p>
+            </div>
+			
+			
+		    
+		    <div class="social-share" id="social-sharebottom"><hr><button class="btn-icon social-toggle" data-toggle="toggle" data-target="#social-sharebottom">Share</button><div class="social-links"><a href="#" data-type="twitter" data-url="https://csapblog.leeds.ac.uk/geocomputation-the-next-20-years/" data-description="GeoComputation: the next 20 years (Andy Evans)" data-via="twitter" class="js-pretty-social"><span class="icon-font-text">Twitter</span><span class="tk-icon-social-twitter"></span></a><a href="#" data-type="facebook" data-url="https://csapblog.leeds.ac.uk/geocomputation-the-next-20-years/" data-title="GeoComputation: the next 20 years (Andy Evans)" data-media="" class="js-pretty-social"><span class="icon-font-text">Facebook</span><span class="tk-icon-social-facebook"></span></a><a href="#" data-type="googleplus" data-url="https://csapblog.leeds.ac.uk/geocomputation-the-next-20-years/" data-description="GeoComputation: the next 20 years (Andy Evans)" class="js-pretty-social"><span class="icon-font-text">Google+</span><span class="tk-icon-social-google"></span></a><a href="#" data-type="linkedin" data-url="https://csapblog.leeds.ac.uk/geocomputation-the-next-20-years/" data-title="GeoComputation: the next 20 years (Andy Evans)" data-via="linkedin" data-media="" class="js-pretty-social"><span class="icon-font-text">Linkedin</span><span class="tk-icon-social-linkedin"></span></a></div></div>
+		</article>		
+
+		            </div>
+                </div> <!-- /.column-container-primary -->
+        </div> <!-- /.column-container -->
+    
+
+			</div>
+			<!-- /.main-->				
+
+
+			
+						<footer class="site-footer">
+					
+				
+				
+				<div class="site-footer-lower">
+					<div class="wrapper-pd wrapper-lg">
+						
+						<ul class="nav pull-left">
+							<li>© 2019 University of Leeds, Leeds, LS2 9JT</li>
+							<li><a href="http://www.leeds.ac.uk/info/5000/about/238/terms_and_conditions">Terms and conditions</a></li>
+						</ul>
+						<ul class="nav"><li id="menu-item-188" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-188"><a href="https://csapblog.leeds.ac.uk/accessibility/">Accessibility</a></li>
+<li id="menu-item-187" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-187"><a href="https://csapblog.leeds.ac.uk/privacy-notice/">Privacy notice</a></li>
+</ul>						
+					</div>
+				</div>
+			</footer>
+			
+		</div>
+		<!-- /site-container -->
+
+		<script type="text/javascript" src="next-20-years_files/toolkit-shortcodes.js"></script>
+<script type="text/javascript" src="next-20-years_files/toolkit-wordpress.js"></script>
+<script type="text/javascript" src="next-20-years_files/script.js"></script>
+<script type="text/javascript" src="next-20-years_files/wp-embed.js"></script>
+			
+
+	
+
+
+<script type="text/javascript" id="" src="next-20-years_files/api.js"></script>
+
+<script type="text/javascript" id="">(function(){try{var q=function(k){var a,c,b,l,m,e,f,g="SoundCloud",d=SC.Widget(k);d.bind(SC.Widget.Events.READY,function(){d.getCurrentSound(function(a){f=a.title});d.bind(SC.Widget.Events.PLAY,function(){a="Play";h(g,a,f)});d.bind(SC.Widget.Events.PAUSE,function(b){c=Math.round(100*b.relativePosition);100!==c&&(a="Pause",h(g,a,f))});d.bind(SC.Widget.Events.PLAY_PROGRESS,function(d){e=!1;c=Math.round(100*d.relativePosition);25!==c||b||(a="25%",e=b=!0);50!==c||l||(a="50%",e=l=!0);75!==c||m||(a="75%",
+e=m=!0);e&&h(g,a,f)});d.bind(SC.Widget.Events.FINISH,function(){a="100%";b=l=m=!1;h(g,a,f)})})},h=function(b,a,c){window.dataLayer.push({event:"scEvent",eventCategory:b,eventAction:a,eventLabel:c})},n,p=document.querySelectorAll('iframe[src*\x3d"api.soundcloud.com"]');var b=0;for(n=p.length;b<n;b+=1)q(p[b])}catch(k){console.log("Error with SoundCloud API: "+k.message)}})();</script></body></html>

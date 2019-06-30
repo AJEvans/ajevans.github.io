@@ -1,0 +1,53 @@
+<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    &nbsp;
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}/index.html">Homepage</a>
+    <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}/courses/index.html">Course materials and tutorials</a>
+    <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}/teaching/index.html">Teaching subjects</a>	
+    <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}/coding/index.html">Programming, software, and coding posts</a>
+    <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}/papers/index.html">Papers and publications</a>
+    <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}/presentations/index.html">Talks</a>
+    <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}/research/index.html">Research</a>
+    <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}/positions/index.html">Positions and responsibilities</a>
+    <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}/links/index.html">Other sites/links</a>	
+    <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}/personal/index.html">About/Personal</a>		
+	
+	<P style="position:absolute; bottom: 0; right: 4px;">
+	<A href="{{ site.baseurl }}/stuff/index.html" style="color:#252525; text-decoration:none">&nbsp;&pi;&nbsp;</A>
+	</P>
+
+    <P style="position:absolute; bottom: 0; left: 10px;">
+	<A href="{{ site.baseurl }}/credits.html" style="color:#505050; text-decoration:none">Credits and Copyright</A>
+	</P>
+	
+    {% comment %}
+      The code below dynamically generates a sidebar nav of pages with
+      `layout: page` in the front-matter. See readme for usage.
+    {% endcomment %}
+
+    {% assign pages_list = site.pages | sort:"url" %}
+    {% for node in pages_list %}
+      {% if node.title != null %}
+        {% if node.layout == "mainNodePage" %}
+          <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ site.url }}{{ node.url }}">{{ node.title }}</a>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &nbsp;
+    </p>
+  </div>
+</div>
+ 

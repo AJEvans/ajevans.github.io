@@ -1,0 +1,154 @@
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    {% if page.title == "Home" %}
+      {{ site.title }} &middot; {{ site.tagline }}
+    {% else %}
+      {{ page.title }} &middot; {{ site.title }}
+    {% endif %}
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{{ site.baseurl }}/css/doublePage.css">
+  <link rel="stylesheet" id="pagestyle" href="{{ site.baseurl }}/css/aestheticsLight.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:400">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ site.baseurl }}/css/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="{{ site.baseurl }}/css/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+
+<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/cookieconsent.min.css" />
+
+<SCRIPT type="text/javascript" src="{{ site.baseurl }}/local-scripts/themeScript.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="{{ site.baseurl }}/local-scripts/justQuiz.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="{{ site.baseurl }}/local-scripts/utilities.js"></SCRIPT>
+<script src="{{ site.baseurl }}/external-scripts/cookieconsent.min.js"></script>
+
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+<script>
+
+var cookieOk = true;
+
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+
+	onInitialise: function (status) {
+	  var type = this.options.type;
+	  var didConsent = this.hasConsented();
+	  
+
+	  if (type == 'opt-out' && !didConsent) {
+		theme = "Light";
+		antitheme = "Dark";
+		cookieOk = false;
+	 } else {
+		cookieOk = true;
+		theme = getTheme();
+		if  (theme != null) setFirstStyleSheet(theme, getAntitheme());
+	  }
+	},
+	 
+	onStatusChange: function(status, chosenBefore) {
+	  var type = this.options.type;
+	  var didConsent = this.hasConsented();
+
+	  if (type == 'opt-out' && !didConsent) {
+		cookieOk = false;
+	  } else {
+		cookieOk = true;
+	  }
+	},
+	 
+	onRevokeChoice: function() {
+	  var type = this.options.type;
+	  if (type == 'opt-in') {
+		cookieOk = true;
+	  }
+	  if (type == 'opt-out') {
+		cookieOk = false;
+	  }
+	},
+
+
+  "palette": {
+    "popup": {
+      "background": "#252e39"
+    },
+    "button": {
+      "background": "#14a7d0"
+    }
+  },
+  "theme": "classic",
+  "position": "bottom-right",
+  "type": "opt-out",
+  "content": {
+    "message": "This website uses cookies to control its colour scheme.  Opt out to control this per-page.",
+    "deny": "Opt out",
+    "link": "Learn more about cookies"
+  }
+  
+	  
+  
+})});
+
+
+
+</script>
+
+
+
+
+<script>
+
+
+function setFirstStyleSheet(theme, antitheme){
+	document.getElementById('pagestyle').setAttribute('href', "{{ site.baseurl }}/css/aesthetics" + theme + ".css");
+	document.getElementById('pageStyleIcon').setAttribute('src', "{{ site.baseurl }}/css/" + antitheme + ".png");
+	document.getElementById('pageStyleIcon').setAttribute('alt', antitheme + " theme");
+	document.getElementById('pageStyleIcon').onclick = function () {setStyleSheet(theme, antitheme);};
+	
+}
+
+
+// Script based on https://www.developphp.com/video/JavaScript/Change-Style-Sheet-Using-Tutorial-CSS-Swap-Stylesheet
+function setStyleSheet(theme, antitheme){
+	
+	if (theme == null) {
+		theme = "Light";
+		antitheme = "Dark";
+	} else { 
+	
+		if (theme == "Light") {
+			theme = "Dark";
+			antitheme = "Light";
+		} else {
+			theme = "Light";
+			antitheme = "Dark";
+		}
+	}
+	
+	if (cookieOk != false) setTheme(theme);
+	if (cookieOk != false) setAntitheme(antitheme);
+	
+	document.getElementById('pagestyle').setAttribute('href', "{{ site.baseurl }}/css/aesthetics" + theme + ".css");
+	document.getElementById('pageStyleIcon').setAttribute('src', "{{ site.baseurl }}/css/" + antitheme + ".png");
+	document.getElementById('pageStyleIcon').setAttribute('alt', antitheme + " theme");
+	document.getElementById('pageStyleIcon').onclick = function () {setStyleSheet(theme, antitheme);};
+	
+	
+}
+</script>
+  
+
+</head>

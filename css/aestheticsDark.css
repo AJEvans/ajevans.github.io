@@ -1,0 +1,292 @@
+
+
+
+
+
+
+html {
+  font-family: "PT Serif", Georgia, "Times New Roman", serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+@media (min-width: 38em) {
+  html {
+    font-size: 16px;
+  }
+}
+
+
+body {
+  color: #eeeef0;
+  background-color: #333338;
+  -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+}
+
+
+
+/* No `:visited` state is required by default (browsers will use `a`) */
+a {
+  color: #40a4da;
+  text-decoration: none;
+}
+a strong {
+  color: #40a4da;
+}
+/* `:focus` is linked to `:hover` for basic accessibility */
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
+
+
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin-bottom: .5rem;
+  line-height: 1.25;
+  color: #eeeef0;
+  text-rendering: optimizeLegibility;
+  font-weight: 400;
+  letter-spacing: -.025rem;
+  
+}
+h1 {
+  font-size: 1.4rem;
+}
+h2 {
+  margin-top: 1rem;
+  font-size: 1.3rem;
+}
+h3 {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+}
+h4, h5, h6 {
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+/* Body text */
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+strong {
+  color: #ffffff;
+}
+
+ 
+/* Lists */
+ul, ol, dl {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+dt {
+  font-weight: bold;
+}
+dd {
+  margin-bottom: .5rem;
+}
+
+/* Misc */
+hr {
+  margin: 1.5rem 0;
+  border: 0;
+  background-color: #ddd;
+ }
+
+DIV.hr {
+  margin-top:25px;
+  margin-bottom:25px;
+  border-top: 1px solid #ddd;
+  background-repeat: repeat-x;
+}
+
+DIV.hrdot {
+  margin-top:25px;
+  margin-bottom:25px;
+  border-top: 1px dashed #cccccc;
+  background-repeat: repeat-x;
+}
+
+
+
+
+
+
+abbr {
+  font-size: 85%;
+  font-weight: bold;
+  color: #555;
+  text-transform: uppercase;
+}
+abbr[title] {
+  cursor: help;
+  border-bottom: 1px dotted #e5e5e5;
+}
+
+code , pre, kbd
+{
+  font-family: Menlo, Monaco, "Courier New", Courier, monospace;
+  font-size: 85%;
+  color: #b2dbf8;
+}
+
+
+
+pre {
+  display: block;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  font-size: .8rem;
+  line-height: 1.4;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+pre code {
+  padding: 0;
+  font-size: 100%;
+  color: inherit;
+  background-color: transparent;
+}
+
+/* Quotes */
+blockquote {
+  padding: .5rem 1rem;
+  margin: .8rem 0;
+  color: #b2dbf8;
+  border-left: .25rem solid #e5e5e5;
+}
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+@media (min-width: 30em) {
+  blockquote {
+    padding-right: 5rem;
+    padding-left: 1.25rem;
+  }
+}
+
+
+/* Tables */
+table {
+  width: 100%;
+  border: 0px solid #e5e5e5;
+}
+
+td, 
+th {
+  border: 0px solid #e5e5e5;
+  vertical-align: top;
+}
+
+
+
+
+
+
+
+FIGCAPTION.center  {
+	margin-top: 10px;
+    text-align: center;
+	font-style:italic;
+	font-size:10pt;
+}
+
+IFRAME {
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+	padding:15px; 
+	box-shadow: 0px 4px 6px #333;
+	-moz-box-shadow: 0px 4px 6px #333;
+	-webkit-box-shadow: 0px 4px 6px #333;
+	border-style: solid;
+	border-width:1px;
+    border-radius:15px;
+	border-color:#999999;
+	background-color:#ffffff;
+}
+
+P.ifcaption {
+	margin-left: 25px;
+	margin-right: 25px;
+}
+
+
+
+
+/*
+ * Masthead
+ *
+ * Super small header above the content for site name and short description.
+ */
+
+.masthead {
+  padding-top:    1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 3rem;
+   border-bottom: 1px solid #eee;
+}
+.masthead-title {
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #eeeef0;
+}
+.masthead-title a {
+  color: #eeeef0;
+  font-size: 35px; 
+}
+.masthead-title small {
+  font-size: 75%;
+  font-size: 20px;
+  font-weight: 400;
+  color: #eeeef0;
+  letter-spacing: 0;
+}
+
+@media (max-width: 48em) {
+  .masthead-title {
+    text-align: center;
+  }
+  .masthead-title small {
+    display: none;
+  }
+}
+
+
+IMG#initialState {
+	background-image: url("/images/initialStateDark.gif");
+	background-repeat: no-repeat;
+	width: 71px; 
+	height: 143px; 
+	margin: 0;
+	padding: 0;
+}
+
+IMG#finalState {
+	background-image: url("/images/finalStateDark.gif");
+	background-repeat: no-repeat;
+	width: 71px; 
+	height: 143px; 
+	margin: 0;
+	padding: 0;
+}
+
+H1#key {
+	font-size: 1.1rem;
+}
+
+H1#indepth {
+	font-size: 1.1rem;
+}

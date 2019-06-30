@@ -1,0 +1,202 @@
+<HTML>
+<HEAD>
+  <TITLE>School of Geography, University of Leeds</TITLE>
+<!--META name="description" content="The School of Geography, University of Leeds, UK."--!>
+<!--META name="keywords" content="Geography,Geographical,Humanities,Physical geography,Human geography,Leeds"--!>
+<META name="robots" content="noindex, nofollow">
+<LINK rel="stylesheet" href="http://www.geog.leeds.ac.uk/style/docstyle1.css" type="text/css">
+<script language="Javascript1.1">
+	function Alakazam(){
+      	FunkyNewWindow = window.open
+            ("applet.html","Menu","toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=1,width=900,height=700");
+      }
+</script>
+</HEAD>
+<BODY>
+<HR>
+<P>
+<H2 class=header>Clast Ploughing</H2>
+<H3 class=header>School of Geography, University of Leeds</H3>
+<P>
+<HR>
+<P>
+<!--Please remember to rename this file something appropriate--!>
+<!--This is where you can start your main text below--!>
+
+<H3>Overview</H3>
+<P>
+<STRONG>The applet below ploughs rocks (clasts) trapped in 
+a glacier bed into a virtual slope of mud (till) until they stick in the 
+slope (achieve lodgement). At the same time, it calculates 
+the amount of ice that melts because of pressure on the 
+rock, the force applied to the rock by the ice, and 
+the length the clast travels.</STRONG></P> 
+<P>
+This program is a development of that used in 
+<A href="/projects/a.evans/">Evans (1998)</A>, please see chapter five of 
+that work for a full explaination, though note the differences outlined below. 
+For further information, please contact <A href="/people/a.evans/">Andy Evans</A>.
+</P>
+<P>
+<STRONG><A onClick="Alakazam();"><U>Launch applet in new window</U></A> (may take a short while to appear)</STRONG>
+</P> 
+<P>
+The program runs in two modes. In the first, a single 
+clast is ploughed into a slope using a given ice speed and 
+till residual strength. In this mode the characteristics of 
+the ploughing process are given for each day the ploughing occurs 
+allowing a picture to be built up, for example, of the amount of 
+sediment melting out of the ice at each point on the 
+ploughing gouge.
+</P>
+
+<P>
+In the second mode, a ploughing length is given, and various 
+combinations of ice velocity and till residual strength are 
+tried to see if they can produce the given ploughing length. 
+If they can, a set of characteristics for the ploughing 
+event are given, for example, the total amount of sediment 
+melted out of the ice.
+</P>
+ 
+<P>
+<STRONG>The applet can also be run as an application. If run 
+as an application it allows you to specify an output file, which 
+considerably speeds up runs.</STRONG>
+</P>
+<P>
+If you run the program as an applet, you can still get results 
+by using <KBD>ctrl-x</KBD> to copy the highlighted results 
+from the applet.
+</P>
+<P>
+To run the program as an application, download the file 
+<A href="plough.jar">plough.jar</A> and double-click on it 
+in whatever file manager you use (e.g. Windows Explorer). 
+If the program doesn't run, you'll need to install the 
+JRE (this is installed on most machines 
+already). You can find a copy at 
+<A href="http://java.sun.com/j2se/1.4/download.html">Sun</A>.
+</P>
+
+<H3>Help</H3>
+
+<H4>General parameters</H4>
+
+<DL>
+
+<DT>Inflow percentage</DT>
+<DD>As the clast ploughs, it gouges through the till. This option 
+allows you to set some percentage of the material gouged out of the 
+way to flow back into the gouge.</DD>
+
+<DT>Clast Width</DT>
+<DD>This is the clast length in the direction of ploughing and 
+also the length transfer to this.</DD>
+
+<DT>Clast Height</DT>
+<DD>The vertical length of the clast.</DD>
+
+<DT>Slope the clast ploughes into</DT>
+<DD>This is the slope angle in degrees. It could be 
+used to indicate prow buildup, but the physics of 
+this is less certain than that of ploughing into a slope.</DD>
+
+<DT>Initial debris fraction</DT>
+<DD>This is the amount, in kg, of sediment released from the ice 
+by the melting of 1kg of water. Note that this is not quite the 
+same thing as the ratio of sediment to water in the ice.</DD>
+
+<DT>Till internal friction</DT>
+<DD>The angle of internal friction of the till. 22 degrees is 
+appropriate for a silt-clay mix with some sand.</DD>
+
+</DL>
+
+<H4>Buttons</H4>
+
+<DL>
+
+<DT>Switch Modes</DT>
+<DD>This button allows you to switch between the 
+two modes described above.</DD>
+
+<DT>Calculate for one speed/strength / Calculate for all speeds/strengths</DT>
+<DD>Runs the program. As a minimum the program will tell you it's 
+started and finished.</DD>
+
+<DT>Clear screen</DT>
+<DD>Clears the screen of results and messages.</DD>
+
+<DT>Set output to file</DT>
+<DD>This only appears if the program is run as an application. It 
+allows you to divert results to a text file, rather than the screen. 
+A few messages from the system are still shown on the screen.</DD>
+
+</DL>
+
+<H4>Parameters for testing a single plough event</H4>
+
+<DL>
+
+<DT>Till residual strength</DT>
+<DD>The residual strength or residual supported stress of 
+the till. This is the amount of stress the till can support 
+after it has yielded. It is assumed in this model that 
+the yield strength is zero.</DD>
+
+<DT>Initial ice velocity</DT>
+<DD>The ice velocity in metres per year.</DD>
+
+
+</DL>
+
+<H4>Parameters for testing a multiple ice velocities / till strengths</H4>
+
+<DL>
+
+<DT>Starting velocity / Ending velocity / Step between velocities</DT>
+<DD>Allows you to set up the first and last velocities to try. The 
+program will step between the two at a rate determined by the step 
+value. Each velocity will be tried to see if it produces the 
+requested ploughing length.</DD>
+
+<DT>Starting till strength / Ending till strength / Step between strengths</DT>
+<DD>Allows you to set up the first and last till strengths to try. The 
+program will step between the two at a rate determined by the step 
+value. Each till strength will be tried to see if it produces the 
+requested ploughing length.</DD>
+
+
+<DT>Minimum ploughed length / Maximum ploughed length</DT>
+<DD>Allows you to set a length the clast can plough. The 
+lengths between and including these two figures will 
+be looked for as the program tries various ice velocities and 
+till strengths. Any combinations that produce a length between 
+these two will be saved.</DD>
+
+</DL>
+
+<H3>Changes from Evans, 1998</H3>
+
+<UL>
+<LI>The distribution of the meltout sediment has changed.</LI> 
+<LI>The velocity difference between the clast and the ice are 
+now used as the lodgement criteria, not the drag force.</LI>
+</UL>
+<P>
+For details of the changes, contact <A href="/people/a.evans/">Andy Evans</A>.
+</P>
+
+<!--Don't mess with the stuff below--!>
+<P>
+<HR>
+<P>
+<DIV CLASS=details>
+[<A CLASS=foot HREF="http://www.geog.leeds.ac.uk/">School of Geography homepage</A>]
+[<A CLASS=foot HREF="http://www.leeds.ac.uk/">Leeds University homepage</A>]
+</DIV>
+<P>
+<HR>
+</BODY>
+</HTML>

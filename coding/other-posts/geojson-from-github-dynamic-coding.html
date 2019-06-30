@@ -1,0 +1,209 @@
+<HTML>
+<HEAD></HEAD>
+
+<LINK rel='stylesheet' href='http://mass.leeds.ac.uk/wp-content/themes/responsive/core/css/style.css' type='text/css'/>
+<BODY>
+
+<DIV id="container" class="hfeed">
+
+	<DIV id="header">
+	<DIV id="logo">
+				<span class="site-name"><a href="http://mass.leeds.ac.uk/" title="MASS" rel="home">MASS</a></span>
+				<span class="site-description">Multi Agent Systems and Simulation Research Group</span>
+	</div><!-- end of #logo -->
+	
+<div class="main-nav">
+<ul id="menu-menu-1" class="menu">
+<li id="menu-item-720" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-720"><a href="http://mass.leeds.ac.uk/">Home</a></li>
+<li id="menu-item-640" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-640"><a href="http://mass.leeds.ac.uk/blog/">Blog</a></li>
+<li id="menu-item-641" class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-641"><a href="http://mass.leeds.ac.uk/meetings/">Meetings</a></li>
+<li id="menu-item-647" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-647"><a href="http://mass.leeds.ac.uk/papers/">Papers</a></li>
+<li id="menu-item-648" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-648"><a href="http://mass.leeds.ac.uk/people/">People</a></li>
+<li id="menu-item-660" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-660"><a href="http://mass.leeds.ac.uk/publications/">Publications</a></li>
+<li id="menu-item-661" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-661"><a href="http://mass.leeds.ac.uk/resources/">Resources</a></li>
+</ul>
+</div>
+	
+	
+	</DIV>
+
+	
+	
+	
+
+<DIV id="wrapper" class="clearfix">
+
+<DIV id="content" class="grid col-860">
+
+
+<H1>Embedding Dynamic GitHub-stored maps in websites</H1>
+<HR>
+<H3>Summary:</H2>
+<UL>
+<LI>Last time we <A href="geojson-from-github-coding.html">looked at embedding GitHub data in an external map using JSON-P</A>.</LI>
+<LI>This can be made dynamic by freshly calling for the data and rebuilding the appropriate map layers.</LI>
+<LI>However, we have to play nicely and match GitHubs request for repeat data drawdowns.</LI>
+</UL>
+<HR>
+<H3>Introduction:</H2>
+<P>
+<A href="geojson-from-github-coding.html">Last time</A> we looked at how we can take GeoJSON data stored on GitHub and build it into a mapping system external to 
+the GitHub website, using JSON-P to get the data. However, we only looked at doing this once. Given that we've got a website that 
+could potentially show updates, it would be nice to refresh the map when new data comes in.
+</P>
+<P>
+As we don't have any server-side software that could build a persistent relationship with a web browser client we can't push new 
+data to our visitor -- instead we need to get them to invisibly check whether there are any changes since the page loaded, and 
+request the data again if there has been.
+</P>
+<P>
+The only real issue is that, to prevent their servers being overloaded with request, GitHub ask that you only poll for new data 
+a certain number of times an hour. We need to set up our system to respect this constraint.
+</P>
+<HR>
+<H3>Checking GitHub for changes:</H2>
+<P>
+Polling GitHub for changes relies on understanding a number of elements associated with Hypertext Transmission Protocol (http) request 
+headers. In particular, GitHub rolls most of the needed information into the <CODE>x-ratelimit-limit</CODE> element, and the 
+<CODE>eTag</CODE> element of the protocol. As a web user, you never see these, but they can be attached to any web requests or answers 
+associated with browsing.
+</P>
+<P>
+The eTag element allows us to check whether any changes have been made to our GitHub repository without bothering the server too much. 
+When you request something from GitHub, the server sends you an eTag value in the response. This is an encoded representation of the 
+resource -- a <A href="http://en.wikipedia.org/wiki/Hash_function">hash</A>. The server generates these when the resource changes. Rather than requesting all the data and checking 
+whether it has changed ourselves, we can ask the server only to send us the full data if the eTag has changed. The http protocol includes 
+elements to do this -- we just need some javascript to make the http request. If the server things our eTag is the current one, it will 
+just return a http status of "304" meaning "No change". We can therefore look out for other statuses and act on them . Here's the basic code 
+to get our first eTag. If there has been a change we store the eTag (and could update the map). As this is the first time we get the eTag, 
+there will definitely be a change from the default "00" eTag.  
+Later we can use the proper eTag we get back to make more checks:
+</P>
+<P>
+<CODE>
+var eTag = "00";<BR />
+var req = new XMLHttpRequest();<BR />
+req.open('GET', "https://api.github.com/repos/MassAtLeeds/RouteFactor/events", false);<BR />
+req.setRequestHeader("If-None-Match", eTag);<BR />
+req.send(null);<BR />
+if (req.status != "304") {<BR />
+&nbsp;&nbsp;&nbsp;eTag = req.getResponseHeader("ETag");<BR />
+&nbsp;&nbsp;&nbsp;// Here we know we've had a change so we could also update the map.
+}</CODE>
+</P>
+<P>
+Note that the URL is the URL for the 'events' info for our "RouteFactor" repository -- this contains information on any changes 
+to the repository.
+</P>
+
+
+
+
+<P>
+So, how often can we do this? 
+Github sets the http communication <CODE>x-ratelimit-limit</CODE> element to the number of requests that should be made at a maximum within 
+an hour. We can get this element of the http header, thus:
+</P>
+<P>
+<CODE>
+var req = new XMLHttpRequest();<BR />
+req.open('GET', "https://api.github.com/repos/MassAtLeeds/RouteFactor/events", false);<BR />
+var rate = req.getResponseHeader("x-ratelimit-limit");<BR />
+</CODE>
+</P>
+<P>
+We can now use our rate to set up how often we check the site:
+</P>
+<P>
+<CODE>
+var myVar=setInterval(function(){check()}, 3600000 / rate);
+</CODE>
+</P>
+<P>
+However each time we check the site, we should also check the 
+<CODE>x-ratelimit-limit</CODE> hasn't changed and change the checking interval if it has:
+</P>
+<P>
+<CODE>
+check () {<BR /><BR />
+&nbsp;&nbsp;&nbsp;var req = new XMLHttpRequest();<BR />
+&nbsp;&nbsp;&nbsp;req.open('GET', "https://api.github.com/repos/MassAtLeeds/RouteFactor/events", false);<BR />
+&nbsp;&nbsp;&nbsp;var rate = req.getResponseHeader("x-ratelimit-limit");<BR /><BR />
+
+&nbsp;&nbsp;&nbsp;if (rate != req.getResponseHeader("x-ratelimit-limit")) {<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rate = req.getResponseHeader("x-ratelimit-limit");<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;window.clearInterval(myVar);<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myVar=setInterval(function(){check()}, 3600000 / rate);<BR />
+&nbsp;&nbsp;&nbsp;}<BR />
+}<BR />
+</CODE>
+</P>
+<P>
+Finally, if we find a change, we want to download the GeoJSON data again. To do this, we need to dynamically inject a 
+new script into the webpage, the src of which is a JSON-P request. This is exactly as we did to get our starting 
+data, but this time, rather than hard-wiring the SCRIPT tags, we're going to get javascript to write them into the webpage. 
+As soon as this is done, the script with run, generating the JSON-P code which will, in turn, call back our method, as we 
+saw last time. Once we've updated the map we can remove this SCRIPT, so the page doesn't fill with SCRIPTs if there's a lot of updates.
+</P>
+<P>
+<CODE>
+function addScript () {<BR /><BR />
+	
+&nbsp;&nbsp;&nbsp;var script = document.createElement('SCRIPT');<BR />
+&nbsp;&nbsp;&nbsp;script.type = 'text/javascript';<BR />
+&nbsp;&nbsp;&nbsp;script.async = false;<BR />
+&nbsp;&nbsp;&nbsp;script.src = 'https://api.github.com/repos/MassAtLeeds/RouteFactor/contents/test-routes.geojson?callback=getData';<BR />
+&nbsp;&nbsp;&nbsp;var firstScript = document.getElementsByTagName('script')[0]; <BR />
+&nbsp;&nbsp;&nbsp;firstScript.parentNode.insertBefore(script, firstScript);<BR /><BR />
+	
+	}<BR /><BR />
+	
+
+	function removeScript () {<BR /><BR />
+	
+&nbsp;&nbsp;&nbsp;var firstScript = document.getElementsByTagName('SCRIPT')[0]; <BR />
+&nbsp;&nbsp;&nbsp;firstScript.parentNode.removeChild(firstScript);<BR /><BR />
+
+	}<BR /></CODE>
+</P>
+
+<P>
+So, now we just need to bring this all in order. First we'll make our http request. If the data has changed we'll inject the 
+new SCRIPT, update our map, and then remove the new SCRIPT. 
+</P>
+<HR>
+<P>
+You can see an example <A href="geojson-from-github-dynamic.html">working here</A>. 
+</P>
+<P>
+This adjusts things slightly to save on code repetition (for example, it separates off 
+the http requests into a <CODE>getHTTP()</CODE> method so it can be called at the start to initialise the eTag etc. but you should 
+recognise most of it. The main map update code is in <CODE>addFeatures()</CODE>, which clears the map of layers, and then adds each 
+new feature as a layer to an array of layers, before finally adding each to the map. I've added them to the array in part 
+to ensure the casting, but also because there are other Leaflet methods that work with arrays of layers. Note that the code to 
+first set up the map now also uses this method, however we still need to hardwire in the first SCRIPT call otherwise the data isn't 
+available early enough to set up the map the first time. 
+</P>
+<P>
+The other thing to note is that while we currently just look for status responses that are not 304, we could then interrogate the 
+events stream more deeply to discover what changes have been made and respond in a more nuanced way.
+</P>
+<P>
+So, that's how to use GitHub for some low-level, client-only dynamic mapping. I say "low-level" as it would be much better to 
+use a <A href="http://blog.safe.com/2014/03/twitter-stream-api-map/">dedicated client-server setup for dynamic mapping</A>, not least because of the throttled checking rate for GitHub 
+(when we last tried it was 60 hits an hour, so changes take a minute to appear). However, if you want something relatively 
+simple, it's a good start.
+</P>
+<HR>
+<A href="http://www.geog.leeds.ac.uk/people/a.evans/">Andy</A> : Last edited 30 Apr 2014
+</P>
+
+
+</DIV>
+</DIV>
+</DIV>
+
+
+
+</BODY>
+</HTML>

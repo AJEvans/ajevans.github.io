@@ -1,0 +1,247 @@
+<HTML>
+<HEAD></HEAD>
+
+<LINK rel='stylesheet' href='http://mass.leeds.ac.uk/wp-content/themes/responsive/core/css/style.css' type='text/css'/>
+<BODY>
+
+<DIV id="container" class="hfeed">
+
+	<DIV id="header">
+	<DIV id="logo">
+				<span class="site-name"><a href="http://mass.leeds.ac.uk/" title="MASS" rel="home">MASS</a></span>
+				<span class="site-description">Multi Agent Systems and Simulation Research Group</span>
+	</div><!-- end of #logo -->
+	
+<div class="main-nav">
+<ul id="menu-menu-1" class="menu">
+<li id="menu-item-720" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-720"><a href="http://mass.leeds.ac.uk/">Home</a></li>
+<li id="menu-item-640" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-640"><a href="http://mass.leeds.ac.uk/blog/">Blog</a></li>
+<li id="menu-item-641" class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-641"><a href="http://mass.leeds.ac.uk/meetings/">Meetings</a></li>
+<li id="menu-item-647" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-647"><a href="http://mass.leeds.ac.uk/papers/">Papers</a></li>
+<li id="menu-item-648" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-648"><a href="http://mass.leeds.ac.uk/people/">People</a></li>
+<li id="menu-item-660" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-660"><a href="http://mass.leeds.ac.uk/publications/">Publications</a></li>
+<li id="menu-item-661" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-661"><a href="http://mass.leeds.ac.uk/resources/">Resources</a></li>
+</ul>
+</div>
+	
+	
+	</DIV>
+
+	
+	
+	
+
+<DIV id="wrapper" class="clearfix">
+
+<DIV id="content" class="grid col-860">
+
+
+
+<H1>Embedding GitHub-stored maps in websites</H1>
+<HR>
+<H3>Summary:</H3>
+<UL>
+<LI>GitHub can store and track geographical data.</LI>
+<LI>With added functionality, you can use this facility to build a crowdsourced mapping site.</LI>
+<LI>To embed the mapped data within another site, you need to access the data through the JSON-P methodology.</LI>
+<LI>Next time we'll look at <A href="geojson-from-github-dynamic-coding.html">making the map dynamically update as users add data</A>.</LI>
+</UL>
+<HR>
+<H3>Introduction:</H3>
+<P>
+<A href="https://github.com/">GitHub</A> is a 'free to those whose stuff is free' online storage repository. 
+GitHub can be used to store, and allow editing access to, geographical data in the GeoJSON format (there is also 
+<A href="https://github.com/blog/1772-diffable-more-customizable-maps">functionality for tracking changes</A>). GeoJSON is a relatively compact data format consisting of coordinates and attribute information as text. 
+If you visit GeoJSON data on GitHub, you are first presented with a map of the data. This is non-editable <EM>as a map</EM> -- though you can edit the raw GeoJSON 
+data within the repository, provided you have editing rights. Nevertheless, as we don't all see the world as a set of green GeoJSON text falling from the sky, the good people at <A href="https://www.mapbox.com/">Mapbox</A> 
+have created a free <A href="http://robinlovelace.net/maps/2013/11/16/mapping-for-the-masses.html">GitHub addin</A> that presents GeoJSON data as an editable map, allowing visitors to add, delete, or edit data through a map interface.
+</P>
+<P>
+As you might imagine, this presents a trivially simple method for setting up a crowdsourced / community map. You can see 
+<A href="http://geojson.io/#id=github:MassAtLeeds/RouteFactor/blob/master/test-routes.geojson&map=15/53.8141/-1.5445">an example here</A> by <A href="http://robinlovelace.net/">Robin</A>.
+</P>
+<P>
+What, however, if you want to embed the results of this, or some other GeoJSON file on GitHub within another site? You can 
+<A href="https://help.github.com/articles/mapping-geojson-files-on-github">embed the map created by GitHub directly</A>. 
+However, embedding a map doesn't give you a lot of flexibility in terms of setting up the 
+map and interacting with it. 
+</P>
+<HR>
+<H3>Getting GitHub Data into a map:</H3>
+<P>
+If we want to use our GitHub data elsewhere, say with a different mapping package, there is an issue. In general, most 
+mapping packages you can embed within a website work with Javascript, but Javascript can't generally access resources not on the site that the Javascript-embedding webpage is sent from, so if your site is on <CODE>www.mappygoodness.com</CODE>, you won't be able to access resources on <CODE>github.com</CODE>.
+</P>
+<P>
+The solution is to utilise a methodology called <STRONG>JSON-P</STRONG> (or "JSONP"). While you can't access resources on other sites from within 
+Javascript, what you can do is embed Javascript from multiple sites within your webpage. While this Javascript can still only access 
+resources from your site (because it's as if your site is making a copy of the Javascript and sending it with the webpage), JSON-P offers 
+a cunning way of using this difference between scripts and resources to access resources on the server the embedded script is from. JSON-P is a service some servers offer in which embeds JSON data within a script <EM>as code</EM>. You can then embed this code 
+within your webpage, and access the data. Neat hu?
+</P>
+<P>
+Here's a simple example:
+</P>
+<P>
+<CODE>
+&lt;SCRIPT type="application/javascript"<BR />
+&nbsp;&nbsp;&nbsp;src="https://www.someJSONserver.com/test-routes.geojson?jsonp=functionName"&gt;<BR />
+&lt;/SCRIPT&gt;<BR />
+</CODE>
+</P>
+<P>
+This tells the web browser to expect a SCRIPT at this point, but to go and find the code at the src location. Notice that the 
+end of the address contains the code <CODE>?jsonp=functionName</CODE>. A server that farms out JSON-P will recognise this, and send a 
+SCRIPT like the following (formatted here for clarity):
+</P>
+<P>
+<CODE>
+functionName({<BR />
+&nbsp;"type": "Feature",<BR />
+&nbsp;"geometry": {<BR />
+&nbsp;&nbsp;"type": "Point",<BR />
+&nbsp;&nbsp;"coordinates": [15.6, 10.1]<BR />
+&nbsp;},<BR />
+&nbsp;"properties": {<BR />
+&nbsp;&nbsp;"name": "Innsmouth"<BR />
+&nbsp;}<BR />
+});<BR />
+</CODE>
+</P>
+<P>
+This is then embedded within the SCRIPT tags above as if it were sent from our server. It is worth noting that many JSON-P uses get a script to dynamically 
+make the SCRIPT tags above and inject them into the webpage, however, lots of mapping packages demand the data is available early in the webpage loading, 
+so it is often simpler  to manually add the tags near the top of the page rather than working out which elements are running when. 
+</P>
+<P>
+Notice that the data is embedded within a call to another piece of code "<CODE>functionName</CODE>", a method (a chunk of code to do a job), the name of which is determined by <CODE>?jsonp=functionName</CODE> (as we've told the JSON-P code the method to call, this is known as a 'callback'). 
+If we now write this method into our webpage, the JSON-P code, when it runs, will call this method (which is <EM>all</EM> it does) and pass it the data. Here's an example:
+</P>
+<P>
+<CODE>
+&lt;SCRIPT type="text/javascript"&gt;<BR />
+&nbsp;&nbsp;&nbsp;function functionName(response) {<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var data = response.data.content;<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(data); // dumps data to IE/Firefox/Chrome web developer console.<BR />
+&nbsp;&nbsp;&nbsp;}<BR />
+&lt;/SCRIPT&gt;<BR />
+</CODE>
+</P>
+<P>
+If you're familiar with javascript, you'll see that the data is passed to the method and that javascript interprets it as an object with a 
+response.data.content variable that you can use to ask for the data. 
+</P>
+<P>
+Now, GitHub <A href="http://developer.github.com/v3/#json-p-callbacks">offers a JSON-P service</A> for any JSON data stored in a GitHub repository. So, theoretically, all we have to do is 
+request the JSON-P code by embedding it within our webpage, and we'll have our data, whichever server we actually want to work from.
+</P>
+<P>
+In practice, however, things aren't quite so simple, especially if we decide that instead of the above we'll use an all-in-one get-and-parse JSON-P processing 
+library. GitHub has its own <CODE>callback=functionName</CODE> call-back method structure, which means that standard JSON-P libraries that rely on 
+<CODE>jsonp=functionName</CODE> often don't work, 
+at it also encodes the data in a slightly compressed format. We therefore need to do a little work to get this running. 
+</P>
+<P>
+Firstly, our call to GitHub needs to be slightly non-standard, thus:
+</P>
+<P>
+<CODE>
+&lt;SCRIPT type="application/javascript"<BR />
+&nbsp;&nbsp;&nbsp;src="https://api.github.com/repos/MassAtLeeds/RouteFactor/contents/test-routes.geojson?callback=getData"&gt;<BR />
+&lt;/SCRIPT&gt;<BR />
+</CODE>
+</P>
+<P>
+Secondly, the data that comes back needs re-encoding to a text format our mapping packages can cope with. 
+It is encoded with BASE64 encoding. You can find some code to encode it into more standard 
+text <A href="http://ntt.cc/2008/01/19/base64-encoder-decoder-with-javascript.html">on NTT.cc</A>. 
+Assuming we put this in its own method, our called-back method would therefore look like this:
+</P>
+<P>
+<CODE>
+
+var jsonText = null;<BR /><BR />
+	
+function getData(response) {<BR />
+&nbsp;&nbsp;&nbsp;var data = response.data.content;<BR />
+&nbsp;&nbsp;&nbsp;jsonText = decode64(data);<BR />
+&nbsp;&nbsp;&nbsp;console.log(jsonText);<BR />
+}
+</CODE>
+</P>
+<P>	
+Note that we've added a page-level variable <CODE>jsonText</CODE>, which is going to end up with our data inside it in a recoded format, and which will 
+be available to scripts across the page to use. Make sure that your called-back method, plus the recoding method, are before the SCRIPT requesting the JSON-P, so the browser knows about them prior to loading the JSON-P SCRIPT.
+</P>
+<P>
+You should now be able to use the GeoJSON data in <CODE>jsonText</CODE> (in the example above we dump it to the IE/Firefox/Chrome web developer tools console.
+</P>
+<HR>
+<P>
+You can find an example webpage that uses this technique to map with the popular <A href="http://leafletjs.com/">Leaflet</A> mapping package  
+<A href="geojson-from-github.html">working here</A>. 
+</P>
+<P>
+It uses 
+<A href="http://jquery.com/">jQuery</A> to parse (split up and interpret) the recoded jsonText into leaflet-friendly GeoJSON objects -- note that jQuery won't 
+work with the BASE64 encoded data, you have to recode it first (but there are other advantages to parsing it with jQuery - see below).
+</P>
+<HR>
+
+<H3>Security:</H3>
+<P>
+One final word about security. If you know anything about <A href="http://en.wikipedia.org/wiki/Cross-site_scripting">Cross-Site Scripting (XSS) attacks</A>, this probably seems like absolute madness. You want to 
+build a website that embeds a SCRIPT, the source of which is on an open public repository! This seems like it is asking for someone to come and add something 
+unpleasant to your GitHub repository which will be uploaded into all your users' browsers. Indeed, there is still a marginal risk -- JSON-P makes people 
+nervous for just this reason. However, this use-case is more secure than most. Firstly, GitHub is incharge of sending out the JSON, and it sends it out in Base64 format with a wrapping object. This is interpreted as a String (text), so that while 
+</P>
+<P>
+<CODE>
+var data = alert("Hello World");
+</CODE>
+</P>
+<P>
+in javascript will pop up an alert, even if <CODE>response.data.content</CODE> is an encoding of <CODE>alert("Hello World");</CODE>, the following should not:
+</P>
+<P>
+<CODE>
+&nbsp;&nbsp;&nbsp;var data = response.data.content;<BR />
+&nbsp;&nbsp;&nbsp;jsonText = decode64(data);<BR />
+</CODE>
+</P>
+<P>
+unless you do something very daft, like <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval">evaluating the String as a function</A>. 
+</P>
+<P>
+ Secondly, jQuery is used to parse the JSON. Theoretically one can <A href="http://www.json.org/js.html">evaluate JSON</A> into an object, providing the opportunity for code to be executed, but jQuery's parse function should just analyse it as a series of data types and create an appropriate object without ever running any component of it. jQuery will utilise local JSON.parse functionality where it is 
+ available, and this should adhere to the 
+ ECMAScript standard for 
+ JSON parsers (<A href="http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf">see 15.12.2</A>). This does not dictate runnable objects as a result of parsing, or that code should be run as part of the process.
+ </P>
+ <P>
+ Nevertheless, never say never. It is worth additionally setting your webpage's <A href="http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html">Content-Security-Policy</A> to prevent Cross-Site Scripting attacks bouncing your users beyond your server and GitHub. More details at: <A href="http://www.html5rocks.com/en/tutorials/security/content-security-policy/">this tutorial</A>. Of course, 
+if you don't want crowdsourcing, but just want somewhere your group can place data for the public to access, you can always also set your GitHub 
+repository to be read-only.
+</P>
+<HR>
+<H3>Dynamic mapping:</H3>
+<P>
+So, this gets you a GeoJSON based map serving the data from GitHub. However, it will only load the data once, when the webpage starts. What if 
+you want a crowdsourced map that updates as new data is added? 
+</P>
+<P>
+We'll look at this <A href="geojson-from-github-dynamic-coding.html">next</A>.
+</P>
+<HR>
+<P>
+<A href="http://www.geog.leeds.ac.uk/people/a.evans/">Andy</A> : Last edited 30 Apr 2014 
+</P>
+
+</DIV>
+</DIV>
+</DIV>
+
+
+
+</BODY>
+</HTML>

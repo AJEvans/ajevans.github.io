@@ -1,6 +1,9 @@
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
+
+_build-aje.bat
 
 # Folder config file
 Desktop.ini
