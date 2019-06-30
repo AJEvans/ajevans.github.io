@@ -3,8 +3,8 @@ title: Dr Andrew J. Evans
 email: a.j.evans@leeds.ac.uk
 description: > # this means to ignore newlines until "baseurl:"
   Resources
-baseurl:  "file:///Y:/Blogs/AJEvans_Site" # "https://ajevans.github.io" # the subpath of your site, e.g. /blog/
-url: "file:///Y:/Blogs/AJEvans_Site" # "https://ajevans.github.io" # the base hostname & protocol for your site
+baseurl:   "https://ajevans.github.io" # the subpath of your site, e.g. /blog/
+url:  "https://ajevans.github.io" # the base hostname & protocol for your site
  
 # Build settings
 markdown: kramdown
