@@ -3,6 +3,8 @@
 Thumbs.db
 ehthumbs.db
 
+.jekyll-cache/
+
 _build-aje.bat
 
 # Folder config file
