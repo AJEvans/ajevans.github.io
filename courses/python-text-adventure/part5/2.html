@@ -5,7 +5,8 @@ layout: standardStandardPage
 <div class="home">
 
 <P>
-OK, hopefully you're happy the code is alright. Open it up and I'll go through it a bit at a time.
+OK, hopefully you're happy the code is alright. Open it up and give you a quick overview of 
+how it works.
 </P>
 <P>
 Overall the code avoids using a massive number of if-else statements by instead reading in a 
@@ -71,7 +72,7 @@ Now comes the really clever bit. If we have a <code>current_x</code> and
 </P>
 <P>
 <code>current_x = 1</code><BR>
-<code>current_y = 3</code>
+<code>current_y = 3</code><BR>
 <CODE>if (map_line[current_x][current_y] == 3) :</CODE>
 </P>
 <P>
@@ -100,7 +101,7 @@ If it is "3", we can call an appropriate function. So, for example, assuming
 <P>
 There's a few additional bits in the code: for example, we use zeros to be walls in the 
 map that players can't walk through and we use the <code>len()</code> built in function to 
-find the length of lists, but otherwise that's pretty much all that is going on 
+find the length of lists so the code can read in grids of any size, but otherwise that's pretty much all that is going on 
 in the code other than the code to read in the file.
 </P>
 <P>
