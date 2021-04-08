@@ -1,0 +1,57 @@
+---
+layout: page
+title: Part 1
+---
+
+
+<P>
+Secondly, note that we use "=" to assign a value to a variable, so we can't using for asking if two things 
+are equal. Instead, in conditions, we use double-equals "==". It's a classic error to do this:
+</P>
+ <P>
+<CODE>
+if decision == "N":<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;print("This line done if condition true.")<BR />
+<CODE>print("This line always done.")</CODE>
+</CODE>
+</P>
+<HR>
+<P>
+Thirdly, note that we can check for more than one thing at once using the <EM>Boolean operators</EM> 
+"<CODE>and</CODE>" and "<CODE>or</CODE>", which work like they do in English, so:
+ <P>
+<CODE>
+if decision == "N" or decision == "n" :<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;print("This line done if either condition true.")<BR />
+</CODE>
+</P>
+ <P>
+<CODE>
+if decision == "N" and name == "Alice" :<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;print("This line done if the user has typed N and their name is Alice.")<BR />
+</CODE>
+</P>
+<HR>
+<P>
+Last, note that at the moment if the game ends, the code continues on, saying the way is lit by candles. 
+If we put this inside the if-block that continues the game, we won't have this problem.
+</P>
+<P>
+<CODE>
+decision = input("Do you want to enter? [Y,N]: ")<BR />
+if decision == "N":<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;print("Your quest is at an end, goodbye!")<BR />
+else:<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;print("You enter the mines.")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;print("The way is lit by candles on the wall.")<BR />
+</CODE>
+</P>
+<HR>
+<P>
+<STRONG>Can you write a better version of our current if-statement, which takes into account that users may type lowercase letters 
+and letters that are neither Y or N?
+</STRONG>
+</P>
+
+
+[<A href="../../index.html">Home</A> &gt; <A href="../index.html">Part 1</A> &gt; <A href="5.html">Next</A>]

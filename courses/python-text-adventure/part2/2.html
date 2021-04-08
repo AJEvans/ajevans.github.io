@@ -1,0 +1,54 @@
+---
+layout: page
+title: Part 2
+---
+
+<P>
+So, hopefully that makes things a bit simpiler. We'll look at making things even easier to construct in the next part. 
+For now, let's talk about monsters.
+</P>
+
+<P>
+At the end of the last part, we left our game with a number of options like this...
+</P>
+<P>
+<CODE>
+&nbsp;&nbsp;&nbsp;&nbsp;decision = input("You come to a junction. Turn left or right [L,R]: ")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;if decision == "L" or decision == "l":<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("You turn left and see a terrible ogre!")<BR />
+</CODE>
+</P>
+<P>
+But what is an ogre to do? Fight! That's what. But to fight, you need something to lose. 
+Let's give our player some player_strength points. The player_strength will control how well they fight, but also they'll 
+lose player_strength if they lose the fight. When they get to zero player_strength, they die. Let's give them 3 player_strength 
+points to start with.
+</P>
+<STRONG>
+<P>
+At the top of your file, after the import statement, add the following code to set up a variable called player_strength:
+</P>
+</STRONG>
+<P>
+<CODE>player_strength = 3</CODE>
+</P>
+<P>
+It's usual to add the main variables at the top of a program so they are easy to find. 
+<P>
+<STRONG>
+Also add in another two import statements at the top of the file for a libraries we'll use later:
+</STRONG>
+</P>
+<P>
+<CODE>import random</CODE><BR />
+<CODE>import time</CODE>
+</P>
+</STRONG>
+
+<P>
+Now let's look at the fight... 
+</P>
+
+
+
+[<A href="../index.html">Home</A> &gt; <A href="index.html">Part 2</A> &gt; <A href="2b.html">Next</A>]

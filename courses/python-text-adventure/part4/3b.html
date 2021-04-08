@@ -1,0 +1,54 @@
+---
+layout: page
+title: Part 4
+---
+
+<P>
+Finally, let's think about running away! At the moment, any fight is a fight to the death, but 
+it would be nice if we could avoid a dangerous fight. There's actually a couple of ways of leaping out of a 
+loop.</P>
+<P>
+The keyword <CODE>continue</CODE> will leap you to the start of a loop from the middle of it, but 
+<CODE>break</CODE> will leap you out of it altogether. Here's how we could use it...
+</P>
+<P>
+<CODE>
+def fight(<B>monster_strength, monster_name</B>):<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;<B>global player_strength</B><BR />
+&nbsp;&nbsp;&nbsp;&nbsp;<B>count = 0</B><BR />
+
+&nbsp;&nbsp;&nbsp;&nbsp;while player_strength > 0 and <B>monster_strength</B> > 0:<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count = count + 1<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(<B>"You FIGHT the", monster_name</B>)<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("SMASH!")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time.sleep(500)<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("BASH!")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time.sleep(500)<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("Oo!")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time.sleep(500)<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;random_number = random.randint(10)<BR /><BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if player_strength > random_number:<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("You won! Gain one strength!")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;player_strength  = player_strength + 1<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>monster_strength = monster_strength - 1</B><BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("You lost! Lose one strength!")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;player_strength = player_strength - 1<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>monster_strength = monster_strength + 1</B><BR />
+&nbsp;&nbsp;&nbsp;&nbsp;if player_strength < 1:<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("Oh no! You died!")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sys.exit()<BR /><B>
+&nbsp;&nbsp;&nbsp;&nbsp;else:<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;answer = input("Do you want to run away? [Y][N]")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if answer == "Y" or answer == "y":<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break<BR /></B>
+&nbsp;&nbsp;&nbsp;&nbsp;<B>return count</B><BR />
+<BR />
+</CODE>
+</P>
+<P>
+<CODE>break</CODE> will leap the code out of the while loop. The next line after this is <CODE>return count</CODE>. 
+</P>
+
+
+[<A href="../index.html">Home</A> &gt; <A href="index.html">Part 4</A> &gt; <A href="4.html">Next</A>]

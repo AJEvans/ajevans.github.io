@@ -1,0 +1,66 @@
+---
+layout: page
+title: Part 1
+---
+
+<P>
+The key piece of information for building our story is that you can <EM>nest</EM> if-statements inside each other, like this:
+</P>
+
+
+<P>
+<CODE>
+decision = input("Do you want to enter? [Y,N]: ")<BR />
+if decision == "N" or decision == "n":<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;print("Your quest is at an end, goodbye!")<BR />
+elif decision == "Y" or decision == "y":<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;print("You enter the mines.")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;print("The way is lit by candles on the wall.")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;decision = input("You come to a junction. Turn left or right [L,R]: ")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;if decision == "L" or decision == "l":<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("You turn left and see a terrible ogre!")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;elif decision == "R" or decision == "r":<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("You turn right and see a terrible spider!")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;else:<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("You turn back, coward! Goodbye!")<BR />
+else:<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;print("A hole opens up below you, and you plunge into darkness. Goodbye!")<BR />
+<BR />
+</CODE>
+</P>
+
+<P>
+The main thing is to make sure you keep indenting properly. Each time you have a decision, you push that decision's blocks another four spaces across. 
+You can help keep track of this if you use plenty of <EM>whitespace</EM> (blank lines) to 
+show which bits of code go together:
+</P>
+
+<P>
+<CODE>
+decision = input("Do you want to enter? [Y,N]: ")<BR />
+if decision == "N" or decision == "n":<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;print("Your quest is at an end, goodbye!")<BR />
+elif decision == "Y" or decision == "y":<BR />
+<BR /><BR />
+&nbsp;&nbsp;&nbsp;&nbsp;print("You enter the mines.")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;print("The way is lit by candles on the wall.")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;decision = input("You come to a junction. Turn left or right [L,R]: ")<BR /><BR />
+&nbsp;&nbsp;&nbsp;&nbsp;if decision == "L" or decision == "l":<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("You turn left and see a terrible ogre!")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;elif decision == "R" or decision == "r":<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("You turn right and see a terrible spider!")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;else:<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("You turn back, coward! Goodbye!")<BR />
+<BR /><BR />
+else:<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;print("A hole opens up below you, and you plunge into darkness. Goodbye!")<BR />
+<BR />
+</CODE>
+</P>
+
+<P>
+You should have enough now to start to pull together your own story game...
+</P>
+
+
+[<A href="../index.html">Home</A> &gt; <A href="index.html">Part 1</A> &gt; <A href="6.html">Next</A>]

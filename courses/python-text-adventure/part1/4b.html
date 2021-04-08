@@ -1,0 +1,53 @@
+---
+layout: page
+title: Part 1
+---
+
+
+<P>
+Firstly, we can make three versions of the if-statement:
+</P>
+<P>
+We can have just an "if":
+</P>
+<P>
+<CODE>
+if decision == "N":<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;print("This line done if condition true.")<BR />
+<CODE>print("This line always done.")</CODE>
+</CODE>
+</P>
+<P>
+Or, we can have an "if-else", if we know either one or other is true:
+</P>
+<P>
+<CODE>
+decision = input("Do you want to enter? [Y,N]: ")<BR />
+if decision == "N":<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;print("This line done if condition true.")<BR />
+else:<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;print("This line done if condition isn't true.")<BR />
+<CODE>print("This line always done whatever.")</CODE>
+</CODE>
+</P>
+<P>
+Or, if we've got more than one condition, we can have an <EM>if-else-if ladder</EM>:
+</P>
+<P>
+<CODE>
+decision = input("Do you want to enter? [Y,N]: ")<BR />
+if decision == "N":<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;print("This line done if N entered.")<BR />
+elif decision == "Y":<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;print("This line done if Y entered.")<BR />
+else:<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;print("This line done if something else entered.")<BR />
+<CODE>print("This line always done whatever.")</CODE>
+</CODE>
+</P>
+<P>
+The last is useful, as sometimes people will push anything. Note the weird word <EM>elif</EM>!
+</P>
+
+
+[<A href="../../index.html">Home</A> &gt; <A href="../index.html">Part 1</A> &gt; <A href="4c.html">Next</A>]

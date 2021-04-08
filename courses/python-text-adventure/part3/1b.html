@@ -1,0 +1,82 @@
+---
+layout: page
+title: Part 3
+---
+
+<P>
+In Python, it is generally the case that 
+functions need to come before the code that uses them in a file.
+</P>
+<P>
+<STRONG>
+At the top of your code, after the import statements, add the following code:
+</STRONG>
+<BR /><BR />
+<CODE>
+def fight():<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;global player_strength<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;global ogre_strength<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;while player_strength > 0 and ogre_strength > 0:<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("You FIGHT!")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("SMASH!")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time.sleep(500)<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("BASH!")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time.sleep(500)<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("Oo!")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time.sleep(500)<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;random_number = random.randint(10)<BR /><BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if player_strength > random_number:<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("You won! Gain one strength!")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;player_strength  = player_strength + 1<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ogre_strength = ogre_strength - 1<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("You lost! Lose one strength!")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;player_strength = player_strength - 1<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ogre_strength = ogre_strength + 1<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;if player_strength < 1:<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("Oh no! You died!")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sys.exit()<BR />
+<BR />
+</CODE>
+
+</P>
+<P>
+This is our function. You can see it starts with a <EM>declaration</EM> line:
+<BR />
+<CODE>def fight():</CODE>
+<BR />
+<CODE>def</CODE> defines the 
+function. <CODE>fight</CODE> is its name. We'll come to the parentheses "()" shortly. The colon ":" starts a 
+block - all the code indented after it is inside the function, just as with if-statements and loops.
+</P>
+<P>
+You'll also notice the following lines:
+</P>
+<P>
+<CODE>
+    global player_strength<BR />
+    global ogre_strength
+</CODE>
+</P>
+<P>
+You can see they mention the two variables we set up earlier. Variables in Python have 
+<EM>scope</EM>, that is, areas where they are alive and can be used. Any variables made inside 
+a function only exist within that function. A side effect of this is if we do:
+</P>
+<P>
+<CODE>
+    player_strength = player_strength - 1<BR />
+</CODE>
+</P>
+<P>
+inside the function, that makes us an entirely new variable with the same name, but completely different 
+to the player_strength outside the function. To make sure the version inside the function is the one 
+created outside, we use the <CODE>global</CODE> keyword.
+<P>
+Now we need to get our code to run!
+</P>
+ 
+
+
+
+[<A href="../index.html">Home</A> &gt; <A href="index.html">Part 3</A> &gt; <A href="2.html">Next</A>]

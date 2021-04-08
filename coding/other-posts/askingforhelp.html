@@ -1,0 +1,139 @@
+---
+layout: page
+title: How to ask a good coding question
+---
+
+
+<H1>How to ask a good coding question</H1>
+
+<H2>First: how to ask a bad coding question</H2>
+<P>
+One of the problems with writing code is that you can get very close to it - so close that no one understands you when you ask about it. For example, 
+people who teach coding are used to getting emails like this:
+
+</P>
+<HR>
+<P>
+<CODE>
+From:37352@college.org<BR />
+To:missJones@college.org<BR />
+Date:24/3/2020<BR />
+<BR />
+It doesn't work - how do I fix it?</CODE>
+</P>
+<HR>
+<P>
+or...
+</P>
+<HR>
+<P>
+<CODE>
+From:37352@college.org<BR />
+To:missJones@college.org<BR />
+Date:24/3/2020<BR />
+<BR />
+I'm getting an "ArrayIndexOutOfBoundsException" on line 10. Help!</CODE>
+</P>
+<HR>
+<P>
+I know, seems crazy right? But people in a panic do it all the time. These aren't great questions because the person getting the mail immediately has to reply and ask:
+</P>
+<HR>
+<P>
+<CODE>
+From:missJones@college.org<BR />
+To:37352@college.org<BR />
+Date:24/3/2020<BR />
+<BR /><BR />
+a) Who are you (including surname!)?<BR />
+b) Which class/year are you (other people may have the same name!)?<BR />
+c) What are you working on?<BR />
+d) What language are you using and how are you running your code?<BR />
+d) What specifically doesn't work?<BR />
+e) Can you send me your code?</CODE>
+</P>
+<HR>
+<P>
+To which the paniced reply is, more often than not, a screenshot of half the code, which can't be run or experimented on because it's a screenshot and you can't copy and paste code from it.
+</P>
+
+<H2>How to ask a good coding question</H2>
+
+<P>
+So, first - and this seems obvious, but very few people do it - say who you are, which class you're in, and what you are working on (as specifically as you can manage - don't just say "that tutorial" or "what you set").
+</P>
+<P>
+What you say next depends on the problem. 
+</P>
+<P>
+<STRONG>If you have a problem with how to do some coding (not debugging)</STRONG>, then send a short example showing what you're trying to do. Making this will help you 
+think through the problem as well.
+</P>
+<P>
+For example, if I was trying to write some maths software that included a counting loop that skipped odd numbers, I wouldn't send the 
+whole program, because I don't need the person I'm asking to understand the whole program. I can just say:
+</P>
+<HR>
+<P>
+<CODE>
+I'm trying to make a Python loop that skips odd numbers. Is this the right way to do it? It doesn't seem to  work.
+<BR /><BR />
+for i in range(0,10):<BR />
+
+&nbsp;&nbsp;&nbsp;print(i)<BR />
+&nbsp;&nbsp;&nbsp;i = i + 2<BR />
+
+</CODE>
+</P>
+<HR>
+<P>
+To which the person can reply:
+</P>
+<HR>
+<P>
+<CODE>
+Good thinking, but, no, unfortunately this won't work; you can't change the loop variable like this in Python (you can in other languages), it just uses the next number supplied by "range" when it loops again; instead tell it 
+to jump up by 2 each time:
+<BR /><BR />
+for i in range(0,10,2):<BR />
+&nbsp;&nbsp;&nbsp;print(i)
+</CODE>
+</P>
+<HR>
+<P>
+They haven't had to wade through 100 lines of code to understand what you're asking. This is sometimes called a 
+<STRONG>Reproducible Example (reprex)</STRONG>. It is Minimal (as small as possible without being unreadably weird); Complete (it completely describes the 
+issue); and Reproducible (people can run it to see the issue).
+</P>
+<P>
+<STRONG>On the other hand, if you have a debugging issue</STRONG>, and you really can't spot the issue, you'll need to send the person the 
+problem code so they can run it. This means sending them enough of the code that they can start it running and see the whole region of code where there is an 
+issue (i.e. the line of code the system is complaining about and any blocks it is in). 
+</P>
+<P>
+In practice, this quite often means sending all the code, along with any info they need to replicate the issue. This may include:
+</P>
+<UL>
+<LI>any input files it needs to run;</LI> 
+<LI>any instructions on how to run it;</LI>
+<LI>supplying or (better) giving a download location for code libraries you've used;</LI>
+<LI>the URL of any website where you've got ideas from or that you're trying to replicate.</LI>
+</UL>
+<P>
+<strong>Definitely don't send screenshots: no one wants to re-type all the code from a screenshot so they can experiment on it.</strong><BR /><BR />
+<strong>Don't send random bits of software where the person can't see the code before running it: people would have to be crazy to run strange and potentially damaging code on their machine.</strong>
+</P>
+<P>
+Of course, once you've got the reply, also write and thank them: if for no other reason that they'll then know you've got and read their email.
+</P>
+<P>
+You can find out more about asking good questions on <A href="https://stackoverflow.com/help/how-to-ask">StackOverflow</A>, which also has a page on making 
+<A href="https://stackoverflow.com/help/minimal-reproducible-example">reprex</A> (this page is significantly influenced by these writeups, so is also 
+<A href="https://creativecommons.org/licenses/by-sa/3.0/">cc-by-sa</A> <A href="https://stackoverflow.blog/2009/06/25/attribution-required/">licenced</A>).
+</P>
+ 
+
+
+
+
+

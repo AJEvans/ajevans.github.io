@@ -1,0 +1,49 @@
+---
+layout: page
+title: Part 3
+---
+
+<P>
+Let's use this:
+</P>
+<P>
+<CODE>
+&nbsp;&nbsp;&nbsp;&nbsp;decision = input("You come to a junction. Turn left or right [L,R]: ")<BR /><BR />
+&nbsp;&nbsp;&nbsp;&nbsp;if decision == "L" or decision == "l":<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("You turn left and see a terrible ogre and a horrible troll!")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rounds = fight(2, "Ogre")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("You fought it for",rounds,"rounds")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rounds = fight(3, "Troll")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("You fought it for",rounds,"rounds")<BR />
+</CODE> 
+</P>
+<P>
+The value that comes back is copied from the functions "count" variable into the programs "rounds" variable when we 
+asign it to the function call:
+</P>
+<P>
+<CODE>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rounds = fight(2, "Ogre")<BR />
+</CODE>
+</P>
+<P>
+So, functions not only clean up our code in one place, but they clean up our code in multiple places. Having one 
+copy of the fight code also means there's only one copy to make mistakes in. 
+</P>
+<P>
+We've also made it much more flexible by using 
+<EM>arguments</EM> (values we pass into functions) and <EM>parameters</EM> (the variables inside the parentheses in the 
+function, which pick up the argument values). 
+</P>
+<P>
+<STRONG>
+Give it a go changing your other creature fight so it uses this new function. Once you've done this, go back to your own 
+game and clean up the code in the same way. You could have a function that has different characters giving out different 
+amounts of gold, or saying different things (passed into the function), or with wisdom as well as strength.
+</STRONG>
+</P>
+<P>
+In the next part, we'll add a couple of small things to tidy up the last few loose ends.
+</P>
+
+[<A href="../index.html">Home</A> &gt; <A href="index.html">Part 3</A> &gt; <A href="../part4/index.html">Part 4</A>]

@@ -1,0 +1,59 @@
+---
+layout: page
+title: Part 3
+---
+
+
+<P>
+We're not limited to passing in one piece of information, so can pass in the name as well:
+</P>
+<P>
+<CODE>
+&nbsp;&nbsp;&nbsp;&nbsp;decision = input("You come to a junction. Turn left or right [L,R]: ")<BR /><BR />
+&nbsp;&nbsp;&nbsp;&nbsp;if decision == "L" or decision == "l":<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("You turn left and see a terrible ogre and a horrible troll!")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fight(2, "Ogre")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fight(3, "Troll")<BR />
+</CODE>
+</P>
+<P>
+Adding the following to our function:
+</P>
+<P>
+<CODE>
+def fight(<B>monster_strength, monster_name</B>):
+&nbsp;&nbsp;&nbsp;&nbsp;<B>global player_strength</B><BR />
+&nbsp;&nbsp;&nbsp;&nbsp;while player_strength > 0 and <B>monster_strength</B> > 0:<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(<B>"You FIGHT the", monster_name</B>)<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("SMASH!")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time.sleep(500)<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("BASH!")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time.sleep(500)<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("Oo!")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time.sleep(500)<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;random_number = random.randint(10)<BR /><BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if player_strength > random_number:<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("You won! Gain one strength!")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;player_strength  = player_strength + 1<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>monster_strength = monster_strength - 1</B><BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("You lost! Lose one strength!")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;player_strength = player_strength - 1<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>monster_strength = monster_strength + 1</B><BR />
+&nbsp;&nbsp;&nbsp;&nbsp;if player_strength < 1:<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("Oh no! You died!")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sys.exit()<BR />
+<BR />
+</CODE>
+</P>
+<P>
+The values "2" and "Ogre" are assigned to the variables monster_strength and monster_name in the order they read, left to right.
+</P>
+<P>
+<STRONG>Give this a go!</STRONG>
+</P>
+<P>
+There's one last thing we need to know about functions now, and that's how to get information back out of them. 
+</P>
+
+[<A href="../index.html">Home</A> &gt; <A href="index.html">Part 3</A> &gt; <A href="4.html">Next</A>]

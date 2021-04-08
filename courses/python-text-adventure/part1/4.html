@@ -1,0 +1,50 @@
+---
+layout: page
+title: Part 1
+---
+
+<P>
+Hopefully you got that working - if not, check the punctuation and indenting carefully.
+</P>
+
+<P>
+<STRONG>
+When you've got this working, let's test it a little harder. Run the code, but try typing "n" (lowercase) and 
+"G". How does it respond?
+</STRONG>
+</P>
+
+
+<P>We'll come back to these issues. First, let's look at the code in more detail.
+The code we've added uses an if-statement to make a decision. 
+</P>
+<P>
+<CODE>
+decision = input("Do you want to enter? [Y,N]: ")<BR />
+if decision == "N":<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;print("Your quest is at an end, goodbye!")<BR />
+else:<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;print("You enter the mines.")<BR />
+print("The way is lit by candles on the wall.")<BR />
+</CODE>
+</P>
+<P>
+The "if" part is made up of the <EM>keyword</EM> "if" (keywords are special words built into the language), then 
+a <EM>condition</EM>, i.e. something to check, and then finally a colon ":". The colon marks the start of a <EM>block</EM> 
+of code that will happen if the condition is true; in our case, if the variable "<CODE>decision</CODE>" is equal to "<CODE>N</CODE>". This is 
+the first indented block. 
+</P>
+<P>The "else" is the same, but it's block runs if the "if" condition isn't true. 
+After the else-block we <EM>dedent</EM> the code, and the line 
+<BR />
+<CODE>print("The way is lit by candles on the wall.")</CODE>
+<BR />
+runs whether the condition is true or not.
+</P>
+
+<P>
+There's a few things to point out about if-statements which will be of use when we think about the problems we found at the start of this page...
+</P>
+
+[<A href="../../index.html">Home</A> &gt; <A href="../index.html">Part 1</A> &gt; <A href="4b.html">Next</A>]
+

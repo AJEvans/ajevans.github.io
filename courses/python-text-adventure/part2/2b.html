@@ -1,0 +1,57 @@
+---
+layout: page
+title: Part 2
+---
+
+<STRONG>
+<P>
+Adjust your code so it looks like this:
+</P>
+</STRONG>
+<P>
+<CODE>
+&nbsp;&nbsp;&nbsp;&nbsp;decision = input("You come to a junction. Turn left or right [L,R]: ")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;if decision == "L" or decision == "l":<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("You turn left and see a terrible ogre!")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("You FIGHT!")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("SMASH!")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time.sleep(0.5)<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("BASH!")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time.sleep(0.5)<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("Oo!")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time.sleep(0.5)<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;random_number = random.randint(10)<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if player_strength > random_number:<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("You won! Gain one player strength!")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;player_strength = player_strength + 1<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("You lost! Lose one player strength!")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;player_strength = player_strength - 1<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if player_strength < 1:<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("Oh no! You died!")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sys.exit()<BR />
+</CODE>
+</P>
+
+<P>
+Have a good look at this code. You should be able to work out most of what it is doing, with the help of the 
+following pointers:
+</P>
+<UL>
+<LI><CODE>time.sleep()</CODE> puts the program to sleep for a set number of seconds.  
+This code gives the impression of time passing - otherwise the code would happen in a blink of your eye.
+</LI>
+<LI><CODE>random.randint()</CODE> generates a random whole number (no decimal places) between zero and the number entered. <EM>Integers</EM> (or "ints") are what we call whole numbers in computing. 
+You can change the player_strength of the enemy by changing the random number size. Bigger numbers are more likely to be bigger than the player's player_strength.</LI> 
+<LI>Note also 
+we're used what's called <EM>snake_case</EM> to name the variable <CODE>random_number</CODE>; variable names can't have spaces, so we use underscores instead. You may see other 
+ways of writing names, like <EM>camelCase</EM>, but snake_case is traditional for Python, and sticking to the traditions helps everyone to recognise a variable when they see one.</LI> 
+</LI>
+<LI><CODE>player_strength = player_strength + 1</CODE> increases the player_strength variable by one. It works by calculating the right side of the equation and then attaching the 
+answer to the variable on the left. You could use a new variable, but this re-use of a variable is quite common and means it changes everywhere you might 
+use the "player_strength" variable. You may also see this written using the shorthand <CODE>player_strength += 1</CODE>.
+</LI>
+</UL>
+
+
+[<A href="../index.html">Home</A> &gt; <A href="index.html">Part 2</A> &gt; <A href="2c.html">Next</A>]

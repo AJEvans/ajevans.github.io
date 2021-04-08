@@ -1,0 +1,40 @@
+---
+layout: page
+title: Part 2
+---
+<P>
+One of the things we've had to deal with is what happens if 
+we do something to leave the game. It's hard to construct nested if statements so that these all work properly. 
+It would be better if we could just jump out of the game at some point.
+</P>
+<P>
+To do this, we'll use a <EM>library</EM> - sometimes called a <EM>module</EM> in Python. Libraries are code other 
+people have written that we can use. They are written in chunks called <EM>functions</EM>. We've seen two functions already: 
+<CODE>print()</CODE> and <CODE>input()</CODE>. Functions always end in parentheses, which we can use to pass information 
+into the function - for example, what to put on the screen. Some functions also return stuff to us which we can attach to variables - for 
+example, <CODE>input</CODE> returns to us what the user has typed. 
+</P>
+<P>
+These functions are part of a library built into Python, but most libraries you have to <EM>import</EM>. Let's look at how to do this.
+</P>
+<STRONG>
+<P>
+At the very top of your program, put the following code:
+</P>
+<P>
+<CODE>import sys</CODE>
+</P>
+</STRONG>
+<P>
+Once you've done this, you can use the "sys" system library. One function in the sys library stops the program running: "<CODE>exit()</CODE>". 
+We can add the following code to any location where we'd like the user to leave the game:
+</P>
+<P>
+<CODE>sys.exit()</CODE>
+</P>
+</STRONG>
+<P>
+Let's look at an example of where this might be useful...
+</P>
+
+[<A href="../index.html">Home</A> &gt; <A href="index.html">Part 2</A> &gt; <A href="1b.html">Next</A>]

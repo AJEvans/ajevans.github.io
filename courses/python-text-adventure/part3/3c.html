@@ -1,0 +1,48 @@
+---
+layout: page
+title: Part 3
+---
+
+
+<P>
+What this change means, is we can use the function with different monsters, so, for example:
+</P>
+<P>
+<CODE>
+&nbsp;&nbsp;&nbsp;&nbsp;decision = input("You come to a junction. Turn left or right [L,R]: ")<BR /><BR />
+&nbsp;&nbsp;&nbsp;&nbsp;if decision == "L" or decision == "l":<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("You turn left and see a terrible ogre and a horrible troll!")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ogre_strength = 2<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fight(ogre_strength)<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;troll_strength = 3<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fight(troll_strength)
+</CODE>
+</P>
+<P>
+Indeed, as we never use these variables again, we can just do:
+</P>
+<P>
+<CODE>
+&nbsp;&nbsp;&nbsp;&nbsp;decision = input("You come to a junction. Turn left or right [L,R]: ")<BR /><BR />
+&nbsp;&nbsp;&nbsp;&nbsp;if decision == "L" or decision == "l":<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("You turn left and see a terrible ogre and a horrible troll!")<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fight(2)<BR />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fight(3)<BR />
+</CODE>
+</P>
+<P>
+What's happening is exactly what happens with something like <CODE>print("hello world")</CODE> - the value "hello world" is 
+being attached to a variable inside the function, which is used to put the value on the screen. Note that, helpfully, we don't need to know the name of the variable, though you will sometimes see people use:
+</P>
+<P>
+<CODE>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fight(monster_strength=2)
+</CODE>
+</P>
+<P>
+for reasons we don't need to worry about at the mo.
+<P>
+I suppose it might be nice, if we have multiple monsters, if the player knew who they were fighting...
+</P>
+
+[<A href="../index.html">Home</A> &gt; <A href="index.html">Part 3</A> &gt; <A href="3d.html">Next</A>]
